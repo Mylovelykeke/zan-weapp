@@ -1,0 +1,18 @@
+<!--pages/home/home.wxml-->
+<vtu-navbar use-bar-slot show-nav-btn="{{false}}"
+            navbar-class="style4NavBar"
+            homebar-class="style4HomeBar"
+            bg-color="rgb(255, 218, 68)"
+            bind:load="headLoad">
+  <view class="searchImg iconfont icon-share"></view>
+  <view class="searchPanel">
+    <view class="searchPanel_icon iconfont icon-sousuo"></view>
+    <view class="searchPanel_input">
+      <input placeholder="请输入关键字" />
+    </view>
+  </view>
+</vtu-navbar>
+<van-notice-bar
+  left-icon="https://img.yzcdn.cn/1.png"
+  text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
+/>
