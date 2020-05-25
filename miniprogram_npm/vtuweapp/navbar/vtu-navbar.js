@@ -161,9 +161,9 @@ VtuComponent({
     toFirstPage: function(){
       let pages = getCurrentPages();
       console.log(pages);
-      if (pages.length <= 1 || !pages[0].$origin.tabPage){
+      if (pages.length <= 1 || pages[0].$origin&&!pages[0].$origin.tabPage){
         wx.reLaunch({
-          url: '/pages/switchTab/temp/temp'
+          url: "pages/home/home",
         });
       } else {
         wx.navigateTo({

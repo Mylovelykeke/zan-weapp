@@ -1,24 +1,5 @@
-<!-----新闻列表------>
-<template name="newsList_style1">
-  <view class="vtu-news">
-    <view class="vtu-news-single">
-      <view class="vtu-news-single-info">
-        <view class="vtu-news-single-info-title">班赞遗体告别仪式八宝山举行，濮存昕冯远征等为其送行</view>
-        <view class="vtu-news-single-info-detail"><span>新京报</span><span>123条评论</span></view>
-      </view>
-      <view class="vtu-news-single-img">
-        <image src="{{imgList[0]}}" mode="aspectFill"></image>
-      </view>
-    </view>
-    <view class="vtu-news-tool">
-      <view class="vtu-news-tool-li"><i class="iconfont icon-share"></i>转发</view>
-      <view class="vtu-news-tool-li"><i class="iconfont icon-yijian"></i>评论</view>
-      <view class="vtu-news-tool-li"><i class="iconfont icon-zanshangshouyi"></i>点赞</view>
-    </view>
-  </view>
-</template>
-<template name="newsList_style2">
-  <view class="vtu-news" wx:for='{{newsList}}'wx:for-index="idx" wx:for-item="val">
+<!--miniprogram_npm/vtuweapp/template/news/template1.wxml-->
+<view class="vtu-news" wx:for='{{newsList}}' wx:key="index" wx:for-item="val" data-id="{{val.id}}" bindtap="viewdetail">
     <view class="vtu-title"><span class="bg-red">置顶</span>{{val.title}}</view>
     <view class="vtu-news-user">
       <view class="vtu-news-user-img"><image src="{{val.userInfo&&val.userInfo.avatar || 'https://profile.csdnimg.cn/9/2/9/3_xiasohuai'}}"></image></view>
@@ -31,7 +12,7 @@
     </view>
     <view class="vtu-news-many">
       <view class="vtu-news-many-img" wx:if='{{val.files.length>0}}'>
-        <view class="vtu-news-many-img-li" wx:for="{{val.files}}" wx:for-item="img"><image src="{{img.url}}" mode="aspectFill"></image></view>
+        <view class="vtu-news-many-img-li" wx:for="{{val.files}}" wx:key="index" wx:for-item="img"><image src="{{img.url}}" mode="aspectFill"></image></view>
       </view>
       <view class="vtu-news-many-title"> {{val.content}}</view>
       <view class="vtu-news-many-detail"><span>123条评论</span><span>{{val.createAt}}</span></view>
@@ -42,4 +23,3 @@
       <view class="vtu-news-tool-li"><i class="iconfont icon-zanshangshouyi"></i>点赞</view>
     </view> -->
   </view>
-</template>

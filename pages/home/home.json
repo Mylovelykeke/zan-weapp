@@ -5,7 +5,6 @@
     "van-notice-bar": "@vant/weapp/notice-bar/index",
     "van-nav-bar": "@vant/weapp/nav-bar/index",
     "vtu-navbar": "/miniprogram_npm/vtuweapp/navbar/vtu-navbar",
-    "vtu-tab": "/miniprogram_npm/vtuweapp/tab/vtu-tab",
-    "vtu-tabs": "/miniprogram_npm/vtuweapp/tabs/vtu-tabs"
+    "stz-card": "/components/stzCard/index"
   }
 }

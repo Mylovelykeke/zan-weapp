@@ -1,2 +1,94 @@
 <!--pages/home/detail/detail.wxml-->
-<text>pages/home/detail/detail.wxml</text>
+<vtu-navbar title="Navbar"  goHome="{{false}}"></vtu-navbar>
+<view class="main">
+  <view>
+    <view class="nav">
+      <swiper v-if="files&&files.length>0" class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+        <!-- <swiper-item>
+                        <block >
+                            <video
+                            :autoplay='false' 
+                            loop
+                            class="swiper-item"
+                            :show-play-btn='true'
+                            :controls='true'
+                            objectFit="fill" 
+                            :show-mute-btn='false'
+                            poster="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574066857005&di=27dc7334bc80c4336d3443e8ecde3160&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F17%2F02%2F06%2Fed0c0ddc6271b0717ca64ffdf847eab6.jpg"
+                            :show-center-play-btn='true'
+                            :vslide-gesture-in-fullscreen='true'
+                            src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" 
+                            ></video>
+                        </block>
+                    </swiper-item> -->
+        <swiper-item v-for="(item, index) in files" :key="index">
+          <image :src="item.url" :data-src='item.url' class="slide-image  " mode="aspectFill" bindtap='previewImage(item)' />
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="detail_userinfo" :style="{'padding-top':files&&files.length>0?'':'80px'}">
+      <image class="skeleton-rect" :src="userInfo.avatar" alt=""></image>
+      <span class="user-name skeleton-rect">{{userInfo.name}}</span>
+      <span class="attest skeleton-rect">
+        <i class="iconfont icon-shimingrenzheng"></i>
+      </span>
+      <span class="flower" v-for="count  in 5" :key="count">
+        <i class="iconfont icon-icon-test"></i>
+      </span>
+    </view>
+    <view class="content" bindtap="OnClickReplyName({id:1,name:'访客'})">
+      <view class="detail-item">
+        <view class="title">
+          {{title}}
+        </view>
+      </view>
+      <view class="location skeleton-rect" v-if='location'>
+        <view class="location-info">
+          <i class="iconfont icon-zb"></i>
+          {{location&&location.address}}
+        </view>
+        <view class="location-right">
+          <i class="iconfont icon-youjiantou"></i>
+        </view>
+      </view>
+      <view class="article ">
+        {{content}}
+      </view>
+      <view class="content-footer">
+        <view class="skeleton-rect">
+          发表于 {{itemInfo&&itemInfo.createAt}}
+        </view>
+        <view class="content-phone">
+          <view>
+            <i class="iconfont icon-dianhua"></i>
+            <span>联系电话</span>
+            <span class="content-count">200人咨询</span>
+          </view>
+          <span>获取</span>
+        </view>
+      </view>
+    </view>
+    <view class="notice">
+      <view class="notice-title">
+        <span>租房须知</span>
+        <i class="iconfont icon-youjiantou"></i>
+      </view>
+      <span>若房东向您索要中介费，你可举报！</span>
+      <view class="report" bindtap="OnclickReport">
+        <i class="iconfont icon-jubao"></i>
+        <span>举报</span>
+      </view>
+    </view>
+    <view>
+      <chat-common :plaVal='plaVal' :focus='focus' bindtap='sendMsg' />
+    </view>
+    <view class="all-commonents">
+      <view class="commonents-title">全部评论</view>
+      <commonentItem bindtap='OnClickReplyName' :comment='comment' />
+    </view>
+    <!-- 广告 -->
+    <!-- <view>
+                <SwiperImg :swiper="swiper" :images='images'/>
+            </view> -->
+  </view>
+</view>
