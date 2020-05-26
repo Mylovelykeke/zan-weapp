@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/write/index",
     "pages/home/home",
     "pages/home/detail/detail",
     "pages/index/index",
@@ -10,7 +11,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "找房主",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

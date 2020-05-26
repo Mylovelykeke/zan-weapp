@@ -1,10 +1,14 @@
 {
+  "navigationBarTitleText": "发帖",
   "navigationStyle": "custom",
   "component": true,
   "usingComponents": {
-    "van-notice-bar": "@vant/weapp/notice-bar/index",
-    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "vtu-tab": "/miniprogram_npm/vtuweapp/tab/vtu-tab",
+    "vtu-tabs": "/miniprogram_npm/vtuweapp/tabs/vtu-tabs",
+    "vtu-noticeBar": "/miniprogram_npm/vtuweapp/noticeBar/vtu-noticeBar",
     "vtu-navbar": "/miniprogram_npm/vtuweapp/navbar/vtu-navbar",
+    "vtu-swiperPanel": "/miniprogram_npm/vtuweapp/swiperPanel/swiper/vtu-swiperPanel",
+    "vtu-swiperPanel-item": "/miniprogram_npm/vtuweapp/swiperPanel/item/vtu-swiperPanel-item",
     "stz-card": "/components/stzCard/index"
   }
 }

@@ -1,20 +1,60 @@
 // pages/home/detail/detail.js
+const httpWX = require('../../../utils/wx-request.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    itemInfo:'',
+    title:'',
+    content:'',
+    files:'',
+    location:'',
+    loading:true,
+    userInfo: {
+      name: '访客',
+      avatar: 'https://profile.csdnimg.cn/9/2/9/3_xiasohuai'
+    },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let hostId = options.id 
+    this.OnAddViews(hostId)
+    this.OnGetItemDetail(hostId)
   },
 
+  OnAddViews(id) {
+    httpWX.post({
+      url: '/article/' + id + '/views',
+    }).then(res => {
+      console.log(res, '观看加1')
+    })
+  },
+
+  OnGetItemDetail(id) {
+    httpWX.get({
+      url: '/article/' + id,
+    }).then(res => {
+      let { title, content, files, locationinfo, createAt } = res.data
+      this.setData({
+        itemInfo:res.data,
+        title: title,
+        content: content,
+        files: files,
+        locationinfo: JSON.parse(locationinfo),
+        createAt: createAt
+      }),
+      setTimeout(() => {
+        this.setData({
+          loading:false
+        })
+      }, 500)
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

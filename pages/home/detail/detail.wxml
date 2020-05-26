@@ -1,9 +1,10 @@
 <!--pages/home/detail/detail.wxml-->
-<vtu-navbar title="Navbar"  goHome="{{false}}"></vtu-navbar>
+<vtu-navbar title="详情"  goHome="{{false}}"></vtu-navbar>
+<stz-skeleton wx:if="{{loading}}"></stz-skeleton>
 <view class="main">
   <view>
     <view class="nav">
-      <swiper v-if="files&&files.length>0" class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+      <swiper wx:if="{{files&&files.length>0}}" class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
         <!-- <swiper-item>
                         <block >
                             <video
@@ -21,18 +22,18 @@
                             ></video>
                         </block>
                     </swiper-item> -->
-        <swiper-item v-for="(item, index) in files" :key="index">
-          <image :src="item.url" :data-src='item.url' class="slide-image  " mode="aspectFill" bindtap='previewImage(item)' />
+        <swiper-item wx:for="{{files}}" wx:key="index">
+          <image src="{{item.url}}" data-src='{{item.url}}' class="slide-image  " mode="aspectFill" bindtap='previewImage(item)' />
         </swiper-item>
       </swiper>
     </view>
-    <view class="detail_userinfo" :style="{'padding-top':files&&files.length>0?'':'80px'}">
-      <image class="skeleton-rect" :src="userInfo.avatar" alt=""></image>
+    <view class="detail_userinfo">
+      <image class="skeleton-rect" src="{{userInfo.avatar}}" alt=""></image>
       <span class="user-name skeleton-rect">{{userInfo.name}}</span>
       <span class="attest skeleton-rect">
         <i class="iconfont icon-shimingrenzheng"></i>
       </span>
-      <span class="flower" v-for="count  in 5" :key="count">
+      <span class="flower" wx:for="12345" wx:key="count">
         <i class="iconfont icon-icon-test"></i>
       </span>
     </view>
@@ -42,7 +43,7 @@
           {{title}}
         </view>
       </view>
-      <view class="location skeleton-rect" v-if='location'>
+      <view class="location skeleton-rect" wx:if='{{location}}'>
         <view class="location-info">
           <i class="iconfont icon-zb"></i>
           {{location&&location.address}}
@@ -76,15 +77,15 @@
       <span>若房东向您索要中介费，你可举报！</span>
       <view class="report" bindtap="OnclickReport">
         <i class="iconfont icon-jubao"></i>
-        <span>举报</span>
+        <view><span>举报</span></view>
       </view>
     </view>
     <view>
-      <chat-common :plaVal='plaVal' :focus='focus' bindtap='sendMsg' />
+      <!-- <chat-common :plaVal='plaVal' :focus='focus' bindtap='sendMsg' /> -->
     </view>
     <view class="all-commonents">
       <view class="commonents-title">全部评论</view>
-      <commonentItem bindtap='OnClickReplyName' :comment='comment' />
+      <!-- <commonentItem bindtap='OnClickReplyName' :comment='comment' /> -->
     </view>
     <!-- 广告 -->
     <!-- <view>

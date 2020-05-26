@@ -1,22 +1,43 @@
 <!--pages/home/home.wxml-->
-<vtu-navbar use-bar-slot show-nav-btn="{{false}}"
-            navbar-class="style4NavBar"
-            homebar-class="style4HomeBar"
-            bg-color="rgb(255, 218, 68)"
-            bind:load="headLoad">
-  <view class="searchImg iconfont icon-share"></view>
-  <view class="searchPanel">
-    <view class="searchPanel_icon iconfont icon-sousuo"></view>
-    <view class="searchPanel_input">
-      <input placeholder="请输入关键字" />
+<view id="navbar">
+  <vtu-navbar use-bar-slot show-nav-btn="{{false}}" navbar-class="style4NavBar" homebar-class="style4HomeBar" bg-color="#f0d264" bind:load="headLoad">
+    <view class="searchImg iconfont icon-share"></view>
+    <view class="searchPanel">
+      <view class="searchPanel_icon iconfont icon-sousuo"></view>
+      <view class="searchPanel_input">
+        <input placeholder="请输入关键字" disabled/>
+      </view>
     </view>
-  </view>
-</vtu-navbar>
-<van-notice-bar
-  left-icon="https://img.yzcdn.cn/1.png"
-  text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。"
-/>
-<!-----新闻列表------>
-<view class="center">
-  <stz-card newsList='{{newsList}}' bind:detail="ItemDetail"></stz-card>
+  </vtu-navbar>
+</view>
+<view id="noticeBar">
+  <vtu-noticeBar type="error" icon="iconfont icon-biaoxing" scroll  content="为庆祝祖国70周年，公司决定，国庆节放假10天，望告知。"></vtu-noticeBar>
+</view>
+<view id='header' class="Tab_Span" >
+  <vtu-tabs current="{{current}}" item-align="center" is-average="{{false}}" bind:change="change">
+    <vtu-tab label="求租广场" name="name1"></vtu-tab>
+    <vtu-tab label="房源" name="name2"></vtu-tab>
+  </vtu-tabs>
+</view>
+<!-- 拖拽区域 -->
+<view class="publish" bindtap="OnReleaseArticle">
+    <view class="fabu">
+        <i class="iconfont icon-fabu"></i>
+    </view>
+</view>
+<view>
+  <vtu-swiperPanel height="{{scrollViewHeight}}px" current="{{current}}" bind:change="change">
+    <vtu-swiperPanel-item name="name1" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower"></vtu-swiperPanel-item>
+    <vtu-swiperPanel-item name="name2"></vtu-swiperPanel-item>
+    <view class="swiper" slot="name1">
+      <view class="swiper_li">
+        <!-----新闻列表------>
+        <view class="center">
+          <stz-card newsList='{{newsList}}' bind:detail="ItemDetail"></stz-card>
+        </view>{{index}}</view>
+    </view>
+    <view class="swiper" slot="name2">
+      <view class="swiper_li" wx:for="{{10}}">区域二内容展示{{index}}</view>
+    </view>
+  </vtu-swiperPanel>
 </view>

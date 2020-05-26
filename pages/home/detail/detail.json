@@ -1,6 +1,7 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "vtu-navbar": "/miniprogram_npm/vtuweapp/navbar/vtu-navbar"
+    "vtu-navbar": "/miniprogram_npm/vtuweapp/navbar/vtu-navbar",
+    "stz-skeleton": "/components/skeleton/index"
   }
 }

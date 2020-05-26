@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "vtu-btn": "/miniprogram_npm/vtuweapp/button/vtu-btn",
+    "vtu-cell": "/miniprogram_npm/vtuweapp/cell/item/vtu-cell",
+    "van-overlay": "@vant/weapp/overlay/index"
+  }
+}

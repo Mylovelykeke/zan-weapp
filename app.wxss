@@ -1,6 +1,4 @@
 /**app.wxss**/
-@import 'styles/iconfont.wxss';
-@import '/assets/fonts/iconfont.wxss';
 @import '/assets/css/common.wxss';
 @import '/assets/css/skip.wxss';
 @import '/miniprogram_npm/vtuweapp/template/shop/template.wxss';
@@ -8,6 +6,8 @@
 @import '/miniprogram_npm/vtuweapp/template/list/template.wxss';
 @import '/miniprogram_npm/vtuweapp/template/other/template.wxss';
 @import '/miniprogram_npm/vtuweapp/css/Vtu_Style.wxss';
+@import '/assets/fonts/iconfont.wxss';
+@import 'styles/iconfont.wxss';
 .container {
   height: 100%;
   display: flex;

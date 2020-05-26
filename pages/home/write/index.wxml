@@ -1,0 +1,41 @@
+<!--pages/home/write/index.wxml-->
+<view class="writeContent">
+  <view class="content" id="toast">
+    <!-- 选项 -->
+    <van-overlay show="{{ flag }}" bind:click="onClickHide">
+      <view class="wrapper">
+        <view class="block" catch:tap="noop">
+            <view class="blocktype" wx:for='{{actions}}' wx:key="index" bindtap="selectName" data-val="{{item.name}}">{{item.name}}</view>
+        </view>
+      </view>
+    </van-overlay>
+    <view class="header">
+      <view class="header-title" bindtap="selectType">
+        <span>
+          {{name}}
+        </span>
+        <i class="iconfont icon-xiala"></i>
+      </view>
+      <view class="headerInput">
+        <input type="text" placeholder="加个标题哟~" />
+      </view>
+    </view>
+    <!-- input -->
+    <view class="main">
+      <textarea name="" placeholder="尽情发挥吧 ~"></textarea>
+    </view>
+    <!-- 其他信息 -->
+    <!-- <wx-imgPicker imgList='{{ImgArray}}'/> -->
+  </view>
+  <view class="location">
+    <vtu-cell title="位置" wx:if="{{!locationinfo}}" value="小区名称或地址" border icon-color="#f5bf49" arrow></vtu-cell>
+    <vtu-cell title="位置" wx:else value="{{locationinfo&&locationinfo.title}}" border icon-color="#f5bf49" arrow></vtu-cell>
+    <!-- <i-cell-group>
+            <i-cell title="位置" wx:if="{{!locationinfo}}" value='小区名称或地址'  is-link  ></i-cell>
+            <i-cell title="位置" wx:else value='{{locationinfo&&locationinfo.title}}' is-link ></i-cell>
+        </i-cell-group> -->
+  </view>
+  <view class="vtubtn">
+    <vtu-btn type="primary" bindtap="edit">发布</vtu-btn>
+  </view>
+</view>
