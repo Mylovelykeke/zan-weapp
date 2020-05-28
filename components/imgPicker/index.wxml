@@ -1,0 +1,18 @@
+<!--components/imgPicker/index.wxml-->
+ <view>
+    <view style="overflow:hidden">
+      <view class="ShowImg finish" wx:for="{{imgList}}" wx:key="index">
+        <view class="uploadImg">
+          <image src="{{item.url}}" alt="" mode='aspectFill' bindtap="previewImage"></image>
+          <view>
+            <i class="iconfont icon-guanbi" bindtap="deleteItem(k)"></i>
+          </view>
+        </view>
+      </view>
+      <view class="ShowImg" bindtap="uploadImg" wx:if="{{imgList.length < countChild}}">
+        <view class="uploadImg">
+          <i class="iconfont icon-tianjia"></i>
+        </view>
+      </view>
+    </view>
+  </view>

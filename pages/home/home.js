@@ -16,6 +16,16 @@ Page({
     })
   },
 
+  OnReleaseArticle() {
+    // if (!wx.getStorageSync("userInfo")) {
+    //   this.Flag = true
+    //   return
+    // }
+    wx.navigateTo({
+      url: "/pages/home/write/index",
+    })
+  },
+
   change: function(e) {
     this.setData({
       current: e.detail.current

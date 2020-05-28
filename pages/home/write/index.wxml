@@ -17,15 +17,16 @@
         <i class="iconfont icon-xiala"></i>
       </view>
       <view class="headerInput">
-        <input type="text" placeholder="加个标题哟~" />
+        <input type="text" placeholder="加个标题哟~" bindinput='titleInput' value='{{title}}'/>
       </view>
     </view>
     <!-- input -->
     <view class="main">
-      <textarea name="" placeholder="尽情发挥吧 ~"></textarea>
+      <textarea name="" placeholder="尽情发挥吧 ~" bindinput='contentInput' value='{{content}}'></textarea>
     </view>
     <!-- 其他信息 -->
     <!-- <wx-imgPicker imgList='{{ImgArray}}'/> -->
+    <vtu-imgPicker list="{{imgList}}"  col='4' bind:change='uploadImg'> </vtu-imgPicker>
   </view>
   <view class="location">
     <vtu-cell title="位置" wx:if="{{!locationinfo}}" value="小区名称或地址" border icon-color="#f5bf49" arrow></vtu-cell>
@@ -39,3 +40,4 @@
     <vtu-btn type="primary" bindtap="edit">发布</vtu-btn>
   </view>
 </view>
+<van-notify id="van-notify" />

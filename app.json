@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/home/write/index",
     "pages/home/home",
+    "pages/home/write/index",
     "pages/home/detail/detail",
     "pages/index/index",
     "pages/logs/logs",
