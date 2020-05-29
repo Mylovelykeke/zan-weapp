@@ -70,11 +70,13 @@
     -webkit-line-clamp: 3;
     line-clamp: 3;
     -webkit-box-orient: vertical;
-    font-size: 14px;
     line-height: 20px;
     color: var(--font-ha);
     width: 100%;
     margin-bottom: 10px;
+}
+.vtu-news-single-info-title{
+  font-weight: bold;
 }
 .vtu-news-single-info-detail,
 .vtu-news-many-detail,

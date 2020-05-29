@@ -1,0 +1,89 @@
+/* components/commonentItem/index.wxss */
+@import '/styles/iconfont.wxss';
+.common-content {
+  background-color: white;
+  position: relative;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.common-content.common-content-child {
+  padding: 10px 5px;
+}
+
+.common-content>view {
+  display: flex;
+}
+
+.common-author {
+  vertical-align: top;
+}
+
+.common-author  image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.child-bg {
+  background-color: #f1f1f1;
+}
+
+.common-content .common-content {
+  background-color: #f1f1f1;
+}
+
+.common-main {
+  flex: 1;
+  width: 0;
+  padding-left: 10px;
+}
+
+.common-main >div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.common-main >div:first-child  i {
+  color: #666;
+}
+
+.authorname, .otherone {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.common-time {
+  padding: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.commentes {
+  display: flex;
+  color: #666;
+  padding: 0 0 5px 10px;
+  font-size: 12px;
+}
+
+.common-like {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+}
+
+.common-like   span {
+  font-size: 14px;
+  color: #666;
+}
+
+.common-like   i {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 18px;
+}

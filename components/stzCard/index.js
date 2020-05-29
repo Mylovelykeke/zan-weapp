@@ -7,6 +7,10 @@ Component({
     newsList: {
       type: Array,
       value: []
+    },
+    cardFlag:{
+      type: Boolean,
+      value:true
     }
   },
 

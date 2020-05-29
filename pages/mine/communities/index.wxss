@@ -1,0 +1,29 @@
+/* pages/mine/communities/index.wxss */
+
+.content{
+  padding: 0 10rpx;
+}
+.arb {
+  margin: 10rpx 0rpx;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.arb .arb-group {
+  border-radius: 5px;
+}
+
+.arb-img image {
+  width: 25px;
+  height: 25px;
+}
+
+.arbtext {
+  font-weight: bolder;
+}
+
+.arb1 {
+  margin: 5px 0rpx;
+  overflow: hidden;
+  border-radius: 10px;
+}

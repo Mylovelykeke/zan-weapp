@@ -14,7 +14,23 @@ Page({
   onLoad: function (options) {
 
   },
+  toPostings() {
+    wx.navigateTo({
+      url: "/pages/mine/post/index",
+    })
+  },
 
+  tofavorite() {
+    wx.navigateTo({
+      url: "/pages/mine/favorite/main",
+    })
+  },
+  
+  building () {
+    wx.navigateTo({
+      url: "/pages/mine/communities/index",
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

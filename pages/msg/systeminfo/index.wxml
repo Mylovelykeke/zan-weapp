@@ -1,0 +1,10 @@
+<!--pages/msg/systeminfo/index.wxml-->
+<view>
+    <i-cell-group >
+        <i-cell wx:for="{{list}}" wx:key='index' title="{{item.title}}" label='{{item.time}}'>
+            <view class="icon-info" slot="icon">
+              <image src="../../../assets/images/dy.png" alt=""></image>
+            </view>
+        </i-cell>
+    </i-cell-group>
+  </view>

@@ -1,0 +1,27 @@
+<!--pages/mine/communities/index.wxml-->
+<view>
+  <!-- 仲裁庭 -->
+  <view class="content">
+    <view class="arb">
+      <i-cell-group i-class='arb'>
+        <i-cell i-class='arbtext' title="仲裁大厅" url="/pages/mine/arbitration/index" value='举报处罚管理' is-link>
+          <view class='arb-img' slot='icon'>
+            <image width="30" src="../../../assets/images/wg.png" ></image>
+          </view>
+        </i-cell>
+      </i-cell-group>
+    </view>
+    <view class="arb1">
+      <i-card title="举报" :full='true' extra="查看使用帮助" thumb="./../../assets/images/jb.png">
+        <view slot="content">您目前没有举报过任何内容</view>
+        <view slot="footer">欢迎随手举报垃圾广告，不友善和不规范转载等违规内容，一起建设健康的社区环境</view>
+      </i-card>
+    </view>
+    <view class="arb1">
+      <i-card title="审核内容" :full='true' extra="查看使用帮助" thumb="./../../assets/images/sh.png">
+        <view slot="content">你目前尚未申请该权限</view>
+        <view slot="footer">审核功能分为24小时投票及人工审核，权限功能请查看相关的使用帮助</view>
+      </i-card>
+    </view>
+  </view>
+</view>

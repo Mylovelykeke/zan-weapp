@@ -1,0 +1,37 @@
+<!--pages/mine/arbitration/index.wxml-->
+<view>
+        <view class="header">
+            <span>仲裁大厅</span>
+            <span>
+                <i class="iconfont icon-qiehuan"></i>
+                切换至最新
+            </span>
+        </view>
+        <view class="content">
+            <view class="main" wx:for="10" wx:key="index"> 
+                <view class="title">评论被举报为(包含不友善内容)</view>
+                <view class="rep">
+                    <view class="img">
+                        <image src="https://profile.csdnimg.cn/C/9/6/3_eva3288" alt=""></image>
+                    </view>
+                    <view class="repcontent">
+                       <view class="author">大肆夸奖打瞌睡的卡上</view>
+                       <view class="violation">
+                         实打实的和卡仕达卡仕达看见1111111111111111111111111111哈萨克接电话大苏打实打实大苏打实打实打算
+                       </view>
+                    </view>
+                </view>
+                <view>
+                    <view class="pro_text">
+                        <view>62%不违规</view>
+                        <view>38%不违规</view>
+                    </view>
+                    <i-progress percent="25"  strokeWidth='12' hide-info></i-progress>
+                </view>
+                <view class="footer" bindtap="Onlookers"> 
+                    前往围观
+                    <i class="iconfont icon-youjiantou"></i>
+                </view>
+            </view>
+        </view>
+    </view>

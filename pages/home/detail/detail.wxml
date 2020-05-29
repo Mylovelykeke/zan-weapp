@@ -23,7 +23,7 @@
                         </block>
                     </swiper-item> -->
         <swiper-item wx:for="{{files}}" wx:key="index">
-          <image src="{{item.url}}" data-src='{{item.url}}' class="slide-image  " mode="aspectFill" bindtap='previewImage(item)' />
+          <image src="{{item.url}}" data-url='{{item.url}}' class="slide-image  " mode="aspectFill" bindtap='previewImage' />
         </swiper-item>
       </swiper>
     </view>
@@ -85,11 +85,13 @@
     </view>
     <view class="all-commonents">
       <view class="commonents-title">全部评论</view>
-      <!-- <commonentItem bindtap='OnClickReplyName' :comment='comment' /> -->
+      <common bind:replymsg='replymsg' comment='{{comment}}' ></common>
     </view>
     <!-- 广告 -->
     <!-- <view>
                 <SwiperImg :swiper="swiper" :images='images'/>
             </view> -->
   </view>
+  
+<chat-model bind:sendText='sendText' inputFocus='{{focus}}' plaVal='{{plaVal}}' messageText="{{value}}"></chat-model>
 </view>

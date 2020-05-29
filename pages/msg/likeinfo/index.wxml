@@ -1,0 +1,9 @@
+<!--pages/msg/likeinfo/index.wxml-->
+<view>
+    <view class="content" wx:for="{{list}}" wx:key="index">
+      <i-card i-class='card-small' :full='true' title="{{item.username}}" extra="{{item.extra}}"  thumb="{{item.avatar}}" bindtap="handleItem">
+          <view slot="content" style="font-weight:bold;">{{item.title}}</view>
+          <view slot="footer" class="footer">{{item.content}}</view>
+      </i-card>
+    </view>
+  </view>

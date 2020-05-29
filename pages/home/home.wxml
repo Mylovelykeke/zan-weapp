@@ -37,7 +37,7 @@
         </view>{{index}}</view>
     </view>
     <view class="swiper" slot="name2">
-      <view class="swiper_li" wx:for="{{10}}">区域二内容展示{{index}}</view>
+          <stz-card newsList='{{newsList}}' cardFlag="{{false}}" bind:detail="ItemDetail"></stz-card>
     </view>
   </vtu-swiperPanel>
 </view>

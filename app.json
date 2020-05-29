@@ -1,12 +1,20 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/home/write/index",
     "pages/home/detail/detail",
+    "pages/msg/main",
+    "pages/mine/main",
+    "pages/mine/post/index",
+    "pages/mine/communities/index",
+    "pages/report/index",
+    "pages/home/write/index",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/mine/main",
-    "pages/msg/main"
+    "pages/mine/arbitration/index",
+    "pages/mine/favorite/index",
+    "pages/mine/arbitration_item/index",
+    "pages/msg/systeminfo/index",
+    "pages/msg/likeinfo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,68 @@
+<!--components/chat/index.wxml-->
+<view class="container">
+  <view  class="chatListPanel is-{{showBMP?'showBMP':''}}" capture-bind:touchstart="hiddenBar" capture-bind:touchend="">
+  
+  </view>
+  <view class="chatToolPanel">
+    <view class="chatToolPanel_input">
+      <!-- <view class="icon vtu-icon {{!showRecord?'vtu-icon-yuyin':'vtu-icon-jianpan'}}" capture-bind:touchstart="clickRecord" capture-bind:touchend=""></view> -->
+      <view class="input">
+        <block wx:if="{{showRecord}}">
+          <view class="recordBtn" hover-class="Hover" capture-bind:touchstart="startReordEvent" capture-bind:touchmove="handleTouchMove" capture-bind:touchend="cancelRecordEvent">{{recordBarText}}</view>
+        </block>
+        <block wx:else>
+          <input type="text" class="{{inputFocus?'focusClass':''}}" placeholder="{{plaVal}}" value="{{messageText}}" focus="{{inputFocus}}" cursor-spacing="10" bindinput="inputChangeEvent" bindfocus="inputFocusEvent" bindblur="inputBlurEvent" bindconfirm="sendText" confirm-type="send"
+            confirm-hold="true"></input>
+        </block>
+      </view>
+      <view class="icon vtu-icon {{showBQ?'vtu-icon-jianpan':'vtu-icon-emoji'}}" capture-bind:touchstart="clickBQ" capture-bind:touchend=""></view>
+      <view class="icon vtu-icon  {{!showMENU?'vtu-icon-jiahao1':'vtu-icon-plus-arrow-up-copy'}}" capture-bind:touchstart="clickMENU" capture-bind:touchend=""></view>
+    </view>
+    <view class="chatToolPanel_menu" hidden="{{!showBMP}}">
+      <view class="emoij" hidden="{{!showBQ}}">
+        <swiper indicator-dots="true" class="emoij-swiper">
+          <swiper-item wx:for="{{biaoqingList}}" wx:key="index">
+            <view class="emoij-span">
+              <view class="emoij-span-li" wx:for="{{item}}" hover-class="emoij-span-li-hover" wx:for-index="index" wx:for-item="bq" wx:key="index" catchtap="selectBQ" data-bq="{{bq}}">
+                <image src="https://kefu.vtuzx.com/doc/system/bq/png/{{bq.id-1}}.png"></image>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+        <view class="emojiBar">
+          <view class="icon vtu-icon vtu-icon-expression"></view>
+          <view class="btn" hover-class="btn-hover" capture-bind:touchstart="sendText" capture-bind:touchend="">发送</view>
+        </view>
+      </view>
+      <view class="menu" hidden="{{!showMENU}}">
+        <view class="menu-li" hover-class="menu-li-hover">
+          <view class="span vtu-icon vtu-icon-x-bmp"></view>
+          <view class="text">图片</view>
+        </view>
+        <view class="menu-li">
+          <view class="span vtu-icon vtu-icon-zhuanjie" hover-class="span-hover"></view>
+          <view class="text">客服转接</view>
+        </view>
+        <view class="menu-li" hover-class="menu-li-hover">
+          <view class="span vtu-icon vtu-icon-kuaijie"></view>
+          <view class="text">快捷消息</view>
+        </view>
+        <view class="menu-li" hover-class="menu-li-hover">
+          <view class="span vtu-icon vtu-icon-liaotianjilu"></view>
+          <view class="text">历史记录</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="recordDialog" wx:if="{{startRecord}}">
+    <view class="recordDialog_Icon">
+      <view class="recordDialog_Icon_Cancel vtu-icon vtu-icon-wanjiantou" wx:if="{{cancelRecord}}"></view>
+      <view class="recordDialog_Icon_Start" wx:else>
+        <image src="/assets/image/record.gif" class="imageFill"></image>
+      </view>
+    </view>
+    <view class="recordDialog_Text {{cancelRecord?'cancel':''}}">
+      {{recordDialogText}}
+    </view>
+  </view>
+</view>

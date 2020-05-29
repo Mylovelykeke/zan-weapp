@@ -1,0 +1,58 @@
+<!--components/commonentItem/index.wxml-->
+<view class="content  skeleton-radius">
+  <view class="common-content" wx:for="{{comment}}" wx:key="index">
+    <view>
+      <view class="common-author">
+        <image src="{{headeImg}}" alt=""></image>
+      </view>
+      <view class="common-main">
+        <view>
+          <span class="authorname" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{item.name}}'>{{item.name}}</span>
+          <i class="iconfont icon-jiantou" wx:if="{{item.replyUserName}}"></i>
+          <span bindtap="OnClickReplyName" data-id='{{item.parentCommentId}}' data-name='{{item.replyUserName}}' class="otherone">{{item.replyUserName || ''}}</span>
+        </view>
+        <view class="common-time">
+          <span>{{item.createAt}}</span>
+        </view>
+        <view class="content" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{item.name}}'>
+          {{item.content}}
+        </view>
+        <!-- 子集 -->
+        <view class="child-bg" v-if="v.children">
+          <view class="common-content common-content-child" wx:for="{{item.children[0]}}" wx:for-index="key" wx:key="key" wx:for-item="val" wx:show="key<2">
+            <view wx:if="key<2">
+              <view class="common-author">
+                <image src="{{headeImg}}" alt=""></image>
+              </view>
+              <view class="common-main">
+                <view>
+                  <span class="authorname" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{item.name}}'>{{val.name}}</span>
+                  <i class="iconfont icon-jiantou"></i>
+                  <span class="otherone" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{val.replyUserName}}'>{{val.replyUserName}}</span>
+                </view>
+                <view class="common-time">
+                  <span>{{val.createAt}}</span>
+                </view>
+                <view class="content">
+                  {{val.content}}
+                </view>
+              </view>
+              <view class="common-like">
+                <span>{{likenum}}</span>
+                <i class="iconfont icon-like"></i>
+              </view>
+            </view>
+          </view>
+          <view class="commentes" wx:if="{{item.children[0]&&item.children[0].length>2}}" bindtap="getItemDetail">
+            查看全部{{item.children&&item.children[1]}}评论
+            <i class="iconfont icon-youjiantou"></i>
+          </view>
+        </view>
+      </view>
+      <view class="common-like">
+        <span>{{likenum}}</span>
+        <i class="iconfont icon-like"></i>
+      </view>
+    </view>
+  </view>
+</view>

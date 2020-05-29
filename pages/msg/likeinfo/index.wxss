@@ -1,0 +1,9 @@
+/* pages/msg/likeinfo/index.wxss */
+.content{
+    margin: 5px 0;
+}
+.footer{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

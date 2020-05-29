@@ -1,0 +1,15 @@
+<!--pages/mine/post/index.wxml-->
+<view class="content">
+  <view class="datemodel">
+    <view class="dateTime">
+      <span>4</span>
+      <span class="rule">/</span>
+      <span>27</span>
+    </view>
+    <view class="card">
+      <view wx:for="{{content}}" wx:key='index'>
+        {{item.title}}
+      </view>
+    </view>
+  </view>
+</view>

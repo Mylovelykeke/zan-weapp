@@ -1,2 +1,43 @@
 <!--pages/msg/main.wxml-->
-<text>pages/msg/main.wxml</text>
+<view>
+  <view class="header">
+    <view class="notice">
+      <i-cell-group>
+        <i-cell title="系统消息" is-link url="/pages/msg/systeminfo/index">
+          <view slot="icon">
+            <image class="notice-img dy" src="../../assets/images/dy.png" alt=""></image>
+          </view>
+        </i-cell>
+        <i-cell title="点赞" is-link url="/pages/msg/likeinfo/index">
+          <view slot="icon">
+            <image class="notice-img" src="../../assets/images/dz.png" alt=""></image>
+          </view>
+        </i-cell>
+      </i-cell-group>
+    </view>
+  </view>
+  <view class="content">
+    <view wx:for="{{comment}}" wx:key="index">
+      <i-swipeout i-class="i-swipeout-demo-item" unclosable='{{false}}' actions='{{actions}}' bindtap="handleClickItem">
+        <view slot="content">
+          <view bindtap="handleClick">
+            <view class="i-swipeout-image">
+              <image src="{{item.headeImg}}" alt=""></image>
+            </view>
+            <view class="i-swipeout-des">
+              <view class="i-swipeout-des-h2">
+                <view>
+                  {{item.responder}}
+                </view>
+                <view>
+                  {{item.time}}
+                </view>
+              </view>
+              <view class="i-swipeout-des-detail">{{item.content}}.</view>
+            </view>
+          </view>
+        </view>
+      </i-swipeout>
+    </view>
+  </view>
+</view>

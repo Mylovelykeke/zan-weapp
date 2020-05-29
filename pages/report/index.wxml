@@ -1,0 +1,25 @@
+<!--pages/report/index.wxml-->
+<view>
+  <view class="report">
+    <span class="title">帖子信息</span>
+    <view>
+      <stz-card  newsList='{{content}}'  />
+    </view>
+  </view>
+  <view class="report_type">
+    <span class="title">举报类型</span>
+    <view class="type_arr clearfix">
+      <view wx:for="{{list}}" bindtap="handleItem" class="{{index===ITEM?'line':''}}" data-ITEM="{{index}}" wx:key="index">{{item}}</view>
+    </view>
+  </view>
+  <view class="report_account">
+    <span class="title">请填写举报理由(选填)</span>
+    <view class="content">
+      <textarea maxlength='200' bindinput="watchVal" value='{{value}}' rows="1" placeholder='描述理由请不要超过200字'></textarea>
+      <view class="scope">{{sum}}/200</view>
+    </view>
+  </view>
+  <view class="vtubtn">
+    <vtu-btn type="primary" bindtap="edit">发布</vtu-btn>
+  </view>
+</view>

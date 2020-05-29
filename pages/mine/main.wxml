@@ -1,2 +1,49 @@
 <!--pages/main/main.wxml-->
-<text>pages/main/main.wxml</text>
+<view>
+  <view class="header">
+    <view class="header_main" wx:if="{{userInfo}}">
+      <view class="item_msg">
+        <view class="item_img">
+          <image src="{{userInfo.avatarUrl}}" alt=""></image>
+        </view>
+        <view class="item_name">
+          <view>{{userInfo.nickName}}</view>
+          <view>{{userInfo.country+userInfo&&userInfo.city}}</view>
+        </view>
+      </view>
+      <view class="item_right">
+        <view>信用分</view>
+        <span>30</span>
+      </view>
+    </view>
+    <view class="align" wx:else>
+      <view class="auth" bindtap='onGotUserInfo'>获取微信授权</view>
+    </view>
+  </view>
+
+  <!-- 余额 -->
+  <view class="main-radius">
+    <!-- <titleBar :titleColor='"rgb(255, 218, 68)"' :title="title" /> -->
+    <view class="history_order">
+      <view bindtap="toPostings">
+        <i>24</i>
+        我的帖子
+      </view>
+      <view bindtap="tofavorite">
+        <i>0</i>
+        收藏夹
+      </view>
+      <view>
+        <i>0</i>
+        最近浏览
+      </view>
+    </view>
+  </view>
+  <!-- 详细列表 -->
+  <view class="content">
+    <vtu-cell title="社区建设" wx:if="{{!locationinfo}}" bindtap='building' value="举报及处罚示例" border icon-color="#f5bf49" arrow></vtu-cell>
+    <vtu-cell title="联系客服" wx:if="{{!locationinfo}}" open-type="contact"  border icon-color="#f5bf49" arrow></vtu-cell>
+    <vtu-cell title="意见反馈" wx:if="{{!locationinfo}}" open-type="feedback" border icon-color="#f5bf49" arrow></vtu-cell>
+    <vtu-cell title="商务合作" wx:if="{{!locationinfo}}" border icon-color="#f5bf49" arrow></vtu-cell>
+  </view>
+</view>
