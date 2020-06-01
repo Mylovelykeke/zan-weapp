@@ -1,5 +1,5 @@
 
-const host = 'http://www.superstarprogram.xyz:8081/api'
+const host = 'http://localhost:4000/api'
 
 function request(url, method, data, header = {}) {
   wx.showLoading({

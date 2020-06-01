@@ -3,7 +3,7 @@
   background: white;
 }
 .header {
-  padding: 90px 20px 30px 20px;
+  padding: 45px 20px 30px 20px;
   box-sizing: border-box;
   width: 100%;
   min-height: 90px;
@@ -14,12 +14,12 @@
   text-align: right;
 }
 
-.item_right:first-child {
+.item_right  view:first-child {
   line-height: 30px;
   font-size: 12px;
 }
 
-.item_right:last-child {
+.item_right span:last-child {
   padding: 2px 15px;
   border-radius: 5px;
   color: white;
@@ -70,12 +70,12 @@
   vertical-align: top;
 }
 
-item_name:first-child {
+.item_name view:first-child {
   line-height: 40px;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
-item_name:last-child {
+.item_name view:last-child {
   font-size: 12px;
   color: white;
 }

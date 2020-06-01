@@ -41,3 +41,4 @@
     </view>
   </vtu-swiperPanel>
 </view>
+<login-component wx:if="{{flag}}" bind:closeMask="closeMask" bind:getUserInfo='getUserInfo'></login-component>

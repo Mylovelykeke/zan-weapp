@@ -1,5 +1,6 @@
 // pages/home/write/index.js
 const httpWX = require('../../../utils/wx-request.js')
+const app = getApp()
 import Notify from '../../../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
 
@@ -106,7 +107,7 @@ Page({
       httpWX.post({
         url: '/article/created',
         data: {
-          'openid': '11111111111111111111',
+          'openid': app.globalData.openid,
           "summary": this.data.name,
           'title': this.data.title,
           'content': this.data.content,

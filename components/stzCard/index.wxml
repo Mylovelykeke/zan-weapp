@@ -3,9 +3,9 @@
   <view class="vtu-news" wx:for='{{newsList}}' wx:key="index" wx:for-item="val" data-id="{{val.id}}" bindtap="viewdetail">
     <view class="vtu-title"><span class="bg-red">置顶</span>{{val.title}}</view>
     <view class="vtu-news-user">
-      <view class="vtu-news-user-img"><image src="{{val.userInfo&&val.userInfo.avatar || 'https://profile.csdnimg.cn/9/2/9/3_xiasohuai'}}"></image></view>
+      <view class="vtu-news-user-img"><image src="{{val.user&&val.user.avatarUrl || 'https://profile.csdnimg.cn/9/2/9/3_xiasohuai'}}"></image></view>
       <view class="vtu-news-user-info">
-        <view class="vtu-news-user-info-name"> {{val.userInfo&&val.userInfo.name || '访客'}}</view>
+        <view class="vtu-news-user-info-name"> {{val.user&&val.user.nickName || '访客'}}</view>
         <view class="vtu-news-user-info-detail"><span>已关注</span><span>小程序高度自定义UI组件库</span></view>
       </view>
       <!-----  <view class="vtu-news-user-btn bg-orange-light">+ 关注</view>------>
@@ -30,7 +30,7 @@
     <view class="vtu-news-single">
       <view class="vtu-news-single-info">
         <view class="vtu-news-single-info-title">{{val.title}}</view>
-        <view class="vtu-news-single-info-detail"><span>{{val.userInfo&&val.userInfo.name || '访客'}}</span><span>123条评论</span></view>
+        <view class="vtu-news-single-info-detail"><span>{{val.user&&val.user.nickName || '访客'}}</span><span>123条评论</span></view>
       </view>
       <view class="vtu-news-single-img">
         <image src="{{val.files[0].url}}" mode="aspectFill"></image>

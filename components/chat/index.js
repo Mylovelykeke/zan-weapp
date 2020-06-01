@@ -55,6 +55,14 @@ Component({
    */
   methods: {
     sendText(e){
+      if (this.data.showBMP) {
+        this.setData({
+          showBMP: false,
+          showMENU: false,
+          showBQ: false,
+          showRecord: false
+        })
+      }
       this.triggerEvent('sendText', this.data.messageText)
     },
     previewImage: function (event) {

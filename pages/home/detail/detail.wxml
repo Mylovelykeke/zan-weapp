@@ -1,7 +1,7 @@
 <!--pages/home/detail/detail.wxml-->
 <vtu-navbar title="详情"  goHome="{{false}}"></vtu-navbar>
 <stz-skeleton wx:if="{{loading}}"></stz-skeleton>
-<view class="main">
+<view class="main" capture-bind:touchstart="hiddenBar">
   <view>
     <view class="nav">
       <swiper wx:if="{{files&&files.length>0}}" class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
@@ -28,8 +28,8 @@
       </swiper>
     </view>
     <view class="detail_userinfo">
-      <image class="skeleton-rect" src="{{userInfo.avatar}}" alt=""></image>
-      <span class="user-name skeleton-rect">{{userInfo.name}}</span>
+      <image class="skeleton-rect" src="{{userInfo.avatarUrl}}" alt=""></image>
+      <span class="user-name skeleton-rect">{{userInfo.nickName}}</span>
       <span class="attest skeleton-rect">
         <i class="iconfont icon-shimingrenzheng"></i>
       </span>
@@ -37,7 +37,7 @@
         <i class="iconfont icon-icon-test"></i>
       </span>
     </view>
-    <view class="content" bindtap="OnClickReplyName({id:1,name:'访客'})">
+    <view class="content" bindtap="OnClickReplyName">
       <view class="detail-item">
         <view class="title">
           {{title}}
@@ -92,6 +92,5 @@
                 <SwiperImg :swiper="swiper" :images='images'/>
             </view> -->
   </view>
-  
-<chat-model bind:sendText='sendText' inputFocus='{{focus}}' plaVal='{{plaVal}}' messageText="{{value}}"></chat-model>
 </view>
+<chat-model bind:sendText='sendText'  id="towerId" inputFocus='{{focus}}' plaVal='{{plaVal}}' messageText="{{value}}"></chat-model>

@@ -1,8 +1,8 @@
 <!--components/chat/index.wxml-->
 <view class="container">
-  <view  class="chatListPanel is-{{showBMP?'showBMP':''}}" capture-bind:touchstart="hiddenBar" capture-bind:touchend="">
+  <!-- <view  class="chatListPanel is-{{showBMP?'showBMP':''}}" capture-bind:touchstart="hiddenBar" capture-bind:touchend="">
   
-  </view>
+  </view> -->
   <view class="chatToolPanel">
     <view class="chatToolPanel_input">
       <!-- <view class="icon vtu-icon {{!showRecord?'vtu-icon-yuyin':'vtu-icon-jianpan'}}" capture-bind:touchstart="clickRecord" capture-bind:touchend=""></view> -->

@@ -87,26 +87,26 @@ Component({
   },
 
   created: function () {
-    //默认的首屏宽高，防止内容闪现
-    const that = this;
-    const systemInfo = wx.getSystemInfoSync();
-    (this.systemInfo = {
-      width: systemInfo.windowWidth,
-      height: systemInfo.windowHeight,
-    }),
-      (this.loading = this.loadingAni.includes(this.loading) ? this.loading : 'spin');
-    //绘制背景
-    wx.createSelectorQuery()
-      .selectAll(`.${this.selector}`)
-      .boundingClientRect()
-      .exec(function (res) {
-        console.log(res)
-        if (res[0].length > 0) {
-          that.systemInfo.height = res[0][0].height + res[0][0].top || 0;
-        }
-      });
-    this.rectHandle()
-    this.radiusHandle()
+    // //默认的首屏宽高，防止内容闪现
+    // const that = this;
+    // const systemInfo = wx.getSystemInfoSync();
+    // (this.systemInfo = {
+    //   width: systemInfo.windowWidth,
+    //   height: systemInfo.windowHeight,
+    // }),
+    //   (this.loading = this.loadingAni.includes(this.loading) ? this.loading : 'spin');
+    // //绘制背景
+    // wx.createSelectorQuery()
+    //   .selectAll(`.${this.selector}`)
+    //   .boundingClientRect()
+    //   .exec(function (res) {
+    //     console.log(res)
+    //     if (res[0].length > 0) {
+    //       that.systemInfo.height = res[0][0].height + res[0][0].top || 0;
+    //     }
+    //   });
+    // this.rectHandle()
+    // this.radiusHandle()
   },
   /**
    * 组件的方法列表

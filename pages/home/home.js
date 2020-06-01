@@ -1,6 +1,9 @@
 const httpWX = require('../../utils/wx-request.js')
+const app = getApp()
+const bus = app.globalData.bus
 Page({
   data: {
+    flag: false,
     current: 0,
     style: 7,
     tabValue: 'name2',
@@ -17,10 +20,12 @@ Page({
   },
 
   OnReleaseArticle() {
-    // if (!wx.getStorageSync("userInfo")) {
-    //   this.Flag = true
-    //   return
-    // }
+    if (!app.globalData.userInfo) {
+      this.setData({
+        flag: true
+      })
+      return
+    }
     wx.navigateTo({
       url: "/pages/home/write/index",
     })
@@ -43,6 +48,17 @@ Page({
     this.OnGetList(1)
   },
 
+  onShow() {
+
+  },
+  getUserInfo() {
+    this.setData({
+      flag: false
+    })
+    wx.navigateTo({
+      url: "/pages/home/write/index",
+    })
+  },
   contentHeight() {
     let that = this;
     wx.getSystemInfo({
@@ -85,6 +101,12 @@ Page({
     let id = e.detail.id
     wx.navigateTo({
       url: "/pages/home/detail/detail?id=" + id,
+    })
+  },
+
+  closeMask() {
+    this.setData({
+      flag: false
     })
   }
 });

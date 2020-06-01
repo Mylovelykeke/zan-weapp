@@ -9,6 +9,7 @@
     "vtu-navbar": "/miniprogram_npm/vtuweapp/navbar/vtu-navbar",
     "vtu-swiperPanel": "/miniprogram_npm/vtuweapp/swiperPanel/swiper/vtu-swiperPanel",
     "vtu-swiperPanel-item": "/miniprogram_npm/vtuweapp/swiperPanel/item/vtu-swiperPanel-item",
-    "stz-card": "/components/stzCard/index"
+    "stz-card": "/components/stzCard/index",
+    "login-component": "/components/logincomponent/index"
   }
 }

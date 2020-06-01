@@ -1,7 +1,12 @@
-//app.js
+//app.js\
+const httpWX = require('/utils/wx-request.js')
+var eventBus = require('utils/eventbus.js')
+
 App({
   globalData:{
+    openid:null,
     userInfo: null,
+    bus: eventBus.eventBus,
     biaoqingList: [
       { id: 1, name: '微笑', symbol: '🙂' },
       { id: 2, name: '伤心', symbol: '☹️' },
@@ -117,9 +122,19 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
+
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      success:(res)=> {
+        if (res.code) {
+          // 这里可以把code传给后台，后台用此获取openid及session_key
+          httpWX.get({
+            url: '/user/logintoken?code=' + res.code
+          }).then(res => {
+            if (res.data && !res.data.errcode) {
+              this.globalData.openid = res.data.openid
+            }
+          })
+        }
       }
     })
     // 获取用户信息
@@ -131,7 +146,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {

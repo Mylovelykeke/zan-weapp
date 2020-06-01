@@ -1,0 +1,9 @@
+<!--components/logincomponent/index.wxml-->
+<view class="content" catchtap='cancel'>
+  <view class="main" catchtap>
+    <view class="header">
+      <image src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt=""></image>
+    </view>
+    <vtu-btn  type="success" open-type='getUserInfo' bind:getuserinfo='onGotUserInfo'>获取微信授权</vtu-btn>
+  </view>
+</view>

@@ -1,4 +1,5 @@
 <!--pages/main/main.wxml-->
+<login-component  wx:if="{{flag}}" bind:closeMask="closeMask" bind:getUserInfo='getUserInfo'/>
 <view>
   <view class="header">
     <view class="header_main" wx:if="{{userInfo}}">

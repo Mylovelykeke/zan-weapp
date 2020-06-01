@@ -1,5 +1,6 @@
 // pages/home/detail/detail.js
 const httpWX = require('../../../utils/wx-request.js')
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +13,7 @@ Page({
     content: '',
     files: [],
     location: '',
-    loading: false,
+    loading: true,
     replyUserName:'',
     plaVal:'我也说一句。。。。',
     parentCommentId:'',
@@ -21,7 +22,7 @@ Page({
       name: '访客',
       avatar: 'https://profile.csdnimg.cn/9/2/9/3_xiasohuai'
     },
-    comment: [{ "id": "6a7b8ff6-09f5-4b9e-8043-291afbdec1cd", "name": "垃圾人呀", "email": "1115796788", "content": "2", "pass": false, "userAgent": "WeChat 7.0.14.1660  Android  10 Xiaomi MI 9 mobile", "hostId": "c57b17a9-78f6-42cb-9ecf-f921f68f1d22", "isHostInPage": false, "parentCommentId": null, "replyUserName": null, "replyUserEmail": null, "createAt": "2020-05-19 09:22:40", "updateAt": "2020-05-19T01:22:40.243Z", "children": [[{ "id": "40d84459-637e-41c9-a38a-f0e91a1b4f02", "name": "垃圾人呀", "email": "1115796788", "content": "坎坎坷坷", "pass": false, "userAgent": "WeChat 7.0.14.1660  Android  10 Xiaomi MI 9 mobile", "hostId": "c57b17a9-78f6-42cb-9ecf-f921f68f1d22", "isHostInPage": false, "parentCommentId": "6a7b8ff6-09f5-4b9e-8043-291afbdec1cd", "replyUserName": "垃圾人呀", "replyUserEmail": null, "createAt": "2020-05-19 09:25:57", "updateAt": "2020-05-19T01:25:57.910Z" }, { "id": "ae5a0939-fb32-4b0b-91f0-9e6f3e47cd3b", "name": "垃圾人呀", "email": "1115796788", "content": "44", "pass": false, "userAgent": "WeChat 7.0.14.1660  Android  10 Xiaomi MI 9 mobile", "hostId": "c57b17a9-78f6-42cb-9ecf-f921f68f1d22", "isHostInPage": false, "parentCommentId": "6a7b8ff6-09f5-4b9e-8043-291afbdec1cd", "replyUserName": "垃圾人呀", "replyUserEmail": null, "createAt": "2020-05-19 09:26:03", "updateAt": "2020-05-19T01:26:03.051Z" }, { "id": "d91b26ad-ab31-4c0e-85af-8ea627c94c02", "name": "垃圾人呀", "email": "1115796788", "content": "55", "pass": false, "userAgent": "WeChat 7.0.14.1660  Android  10 Xiaomi MI 9 mobile", "hostId": "c57b17a9-78f6-42cb-9ecf-f921f68f1d22", "isHostInPage": false, "parentCommentId": "6a7b8ff6-09f5-4b9e-8043-291afbdec1cd", "replyUserName": "垃圾人呀", "replyUserEmail": null, "createAt": "2020-05-19 09:26:11", "updateAt": "2020-05-19T01:26:11.620Z" }], 5] }]
+    comment: []
   },
 
   /**
@@ -79,6 +80,7 @@ Page({
       } = res.data
       this.setData({
           itemInfo: res.data,
+          userInfo:res.data.user,
           title: title,
           content: content,
           files: files,
@@ -127,8 +129,9 @@ Page({
       url: '/comment',
       data: {
         hostId: hostId,
-        name: '垃圾人呀',
+        name: app.globalData.userInfo.nickName,
         replyUserName: replyUserName,
+        openid: app.globalData.openid,
         email: '1115796788',
         content: val,
         parentCommentId: parentCommentId,
@@ -143,6 +146,10 @@ Page({
         this.OnGetCommonList(hostId)
       }
     })
+  },
+
+  hiddenBar(){
+    this.selectComponent('#towerId').hiddenBar()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

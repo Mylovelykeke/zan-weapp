@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "vtu-btn": "/miniprogram_npm/vtuweapp/button/vtu-btn"
+  }
+}
