@@ -8,19 +8,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: '出租房子',
+    type: 0,
+    name:'求租房子',
     content: '',
     title: '',
     locationinfo: null,
     actions: [{
-        name: '出租房子'
-      },
-      {
-        name: '求租房子'
-      },
-      {
-        name: '其他'
-      }
+      type: 0,
+      name: '求租房子'
+    },
+    {
+      type: 1,
+      name: '出租房子'
+    },
+    {
+      type: 2,
+      name: '其他'
+    }
     ],
     imgList: [],
     flag: false
@@ -29,7 +33,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
 
@@ -46,9 +50,11 @@ Page({
   },
 
   selectName(e) {
-    let val = e.currentTarget.dataset.val
+    let name = e.currentTarget.dataset.name
+    let type = e.currentTarget.dataset.type
     this.setData({
-      name: val,
+      name: name,
+      type:type,
       flag: false
     })
   },
@@ -67,6 +73,12 @@ Page({
   contentInput(e) {
     this.setData({
       content: e.detail.value
+    })
+  },
+
+  selectItem(){
+    wx.navigateTo({
+      url: "/pages/home/location/index",
     })
   },
 
@@ -104,32 +116,32 @@ Page({
       console.log(">>>> upload images error:", err)
     }).then(ids => {
       let filesid = ids.join(',')
+      let location = JSON.stringify(this.data.locationinfo)
       httpWX.post({
         url: '/article/created',
         data: {
           'openid': app.globalData.openid,
-          "summary": this.data.name,
           'title': this.data.title,
+          'type': this.data.type,
           'content': this.data.content,
-          'locationinfo': this.data.location,
+          'locationinfo': location,
           'files': filesid
         },
       }).then(res => {
-        console.log(res, '??')
         if (res.statusCode == 200) {
           wx.switchTab({
             url: '/pages/home/home',
-            success: function() {
+            success: function () {
               console.log(2222)
               var page = getCurrentPages().pop();
               console.log('page', page)
               if (page == undefined || page == null) return;
               page.onLoad();
             }, //接口调用成功的回调函数
-            fail: function() {
+            fail: function () {
               console.log(2)
             }, //接口调用失败的回调函数
-            complete: function () { console.log(23)} //接口调用结束的回调函数（调用成功、失败都会执行）
+            complete: function () { console.log(23) } //接口调用结束的回调函数（调用成功、失败都会执行）
           })
         }
       })
@@ -138,49 +150,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-
+  onShow: function () {
+    
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

@@ -2,7 +2,7 @@
 <view id="navbar">
   <vtu-navbar use-bar-slot show-nav-btn="{{false}}" navbar-class="style4NavBar" homebar-class="style4HomeBar" bg-color="#f0d264" bind:load="headLoad">
     <view class="searchImg iconfont icon-share"></view>
-    <view class="searchPanel">
+    <view class="searchPanel" bindtap="search">
       <view class="searchPanel_icon iconfont icon-sousuo"></view>
       <view class="searchPanel_input">
         <input placeholder="请输入关键字" disabled/>
@@ -37,7 +37,7 @@
         </view>{{index}}</view>
     </view>
     <view class="swiper" slot="name2">
-          <stz-card newsList='{{newsList}}' cardFlag="{{false}}" bind:detail="ItemDetail"></stz-card>
+          <stz-card newsList='{{FZList}}' cardFlag="{{false}}" data-type='1' bind:detail="ItemDetail"></stz-card>
     </view>
   </vtu-swiperPanel>
 </view>

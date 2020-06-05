@@ -52,10 +52,9 @@
           <i class="iconfont icon-youjiantou"></i>
         </view>
       </view>
-      <view class="article ">
-        {{content}}
-      </view>
-      <view class="content-footer">
+      <rich-text class="article" nodes="{{content}}">
+      </rich-text>
+      <view class="content-footer" wx:if="{{type==1}}">
         <view class="skeleton-rect">
           发表于 {{itemInfo&&itemInfo.createAt}}
         </view>
@@ -69,7 +68,7 @@
         </view>
       </view>
     </view>
-    <view class="notice">
+    <view class="notice" wx:if="{{type==1}}">
       <view class="notice-title">
         <span>租房须知</span>
         <i class="iconfont icon-youjiantou"></i>
@@ -85,7 +84,7 @@
     </view>
     <view class="all-commonents">
       <view class="commonents-title">全部评论</view>
-      <common bind:replymsg='replymsg' comment='{{comment}}' ></common>
+      <common bind:replymsg='replymsg' comment='{{comment}}' bind:getItemDetail='getItemDetail' ></common>
     </view>
     <!-- 广告 -->
     <!-- <view>

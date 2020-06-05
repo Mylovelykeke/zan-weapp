@@ -1,0 +1,20 @@
+<!--pages/home/searchLoad/index.wxml-->
+<vtu-search search-shape="circle" bind:confirm="confirm"></vtu-search>
+<view>
+  <i-cell-group>
+    <i-cell title="{{v}}" wx:for="{{historyArray}}" wx:for-item="v" wx:key="key" data-val='{{v}}' bind:click="SearchhistoryItem">
+      <view slot='icon'>
+        <i class="iconfont icon-lishi"></i>
+      </view>
+      <view slot="footer"  data-index='{{index}}' catchtap="clearItem" >
+        <i class="iconfont icon-close" ></i>
+      </view>
+    </i-cell>
+  </i-cell-group>
+</view>
+
+  <view wx:if="{{historyArray.length>0}}">
+    <view class="clear" bindtap="clearAll" >
+      清空搜索记录
+    </view>
+  </view>

@@ -1,0 +1,5 @@
+<!--pages/home/searchdetail/index.wxml-->
+<vtu-search search-shape="circle" value="{{val}}"  bind:focus="backSearch"></vtu-search>
+<view class="content">
+  <stz-card newsList='{{content}}' bind:detail="ItemDetail"></stz-card>
+</view>

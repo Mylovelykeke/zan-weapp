@@ -25,7 +25,7 @@
                 <image src="{{val.user.avatarUrl}}" alt=""></image>
               </view>
               <view class="common-main">
-                <view style="width: calc(100% - 70px)">
+                <view style="width: calc(100%)">
                   <span class="authorname" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{item.name}}'>{{val.name}}</span>
                   <i class="iconfont icon-jiantou"></i>
                   <span class="otherone" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{val.replyUserName}}'>{{val.replyUserName}}</span>
@@ -37,22 +37,22 @@
                   {{val.content}}
                 </view>
               </view>
-              <view class="common-like">
+              <!-- <view class="common-like">
                 <span>{{likenum}}</span>
                 <i class="iconfont icon-like"></i>
-              </view>
+              </view> -->
             </view>
           </view>
-          <view class="commentes" wx:if="{{item.children[0]&&item.children[0].length>2}}" bindtap="getItemDetail">
+          <view class="commentes" wx:if="{{item.children[0]&&item.children[0].length>2}}" data-id="{{item.id}}" bindtap="getItemDetail">
             查看全部{{item.children&&item.children[1]}}评论
             <i class="iconfont icon-youjiantou"></i>
           </view>
         </view>
       </view>
-      <view class="common-like">
+      <!-- <view class="common-like">
         <span>{{likenum}}</span>
         <i class="iconfont icon-like"></i>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>

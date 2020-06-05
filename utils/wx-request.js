@@ -1,28 +1,29 @@
+// const host = 'http://localhost:4000/api'
+const host = 'http://superstarprogram.xyz:8081/api'
 
-const host = 'http://localhost:4000/api'
-
-function request(url, method, data, header = {}) {
+function request(res) {
+  let { url, method, data, header = {}, Domain = true} = res
+  let ROOT = Domain ? (host + url):url
   wx.showLoading({
     title: '加载中' // 数据请求前loading
   })
   return new Promise((resolve, reject) => {
-    console.log(wx.getStorageSync('token'))
     wx.request({
-      url: host + url, // 仅为示例，并非真实的接口地址
+      url: ROOT, // 仅为示例，并非真实的接口地址
       method: method,
       data: data,
       header: {
         'authorization': wx.getStorageSync('token')
       },
-      success: function (res) {
+      success: function(res) {
         wx.hideLoading()
         resolve(res.data)
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.hideLoading()
         // reject(false)
       },
-      complete: function () {
+      complete: function() {
         wx.hideLoading()
       }
     })
@@ -30,11 +31,13 @@ function request(url, method, data, header = {}) {
 }
 
 function get(obj) {
-  return request(obj.url, 'GET', obj.data)
+  obj.method = 'GET'
+  return request(obj)
 }
 
 function post(obj) {
-  return request(obj.url, 'POST', obj.data)
+  obj.method = 'POST'
+  return request(obj)
 }
 
 module.exports = {

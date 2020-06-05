@@ -4,11 +4,13 @@ const bus = app.globalData.bus
 Page({
   data: {
     flag: false,
+    changeFlag:false,
     current: 0,
     style: 7,
     tabValue: 'name2',
     contBarHeight: 0,
     newsList: [],
+    FZList:[],
     windowHeight: 0,
     scrollViewHeight: 0
   },
@@ -32,9 +34,18 @@ Page({
   },
 
   change: function(e) {
-    this.setData({
-      current: e.detail.current
-    })
+    if(!this.data.changeFlag){
+      this.OnGetList(1, e.detail.current)
+      this.setData({
+        current: e.detail.current,
+        changeFlag:true
+        })
+        setTimeout(()=>{
+          this.setData({
+            changeFlag:false
+          })
+        },10)
+      }
   },
 
   headLoad(e) {
@@ -45,7 +56,7 @@ Page({
 
   onLoad() {
     this.contentHeight()
-    this.OnGetList(1)
+    this.OnGetList(1,this.data.current)
   },
 
   onShow() {
@@ -84,29 +95,45 @@ Page({
     });
   },
 
-  OnGetList(page) {
+  OnGetList(page, type) {
     httpWX.get({
-      url: '/article?page=' + page,
+      url: `/article?page=${page}&type=${type}`,
     }).then(res => {
-      if (res.data[0] && res.data[0].length > 0) {
         let list = res.data[0]
-        console.log(this.list)
-        this.setData({
-          newsList: list
+        list.map(data=>{
+          data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
+            .replace(/<section/g, '<div')
+            .replace(/\/section>/g, '\div>');
+            return data
         })
-      }
+       if(this.data.current == 0){
+         this.setData({
+           newsList: list
+         })
+       } else if (this.data.current == 1){
+         this.setData({
+           FZList: list
+         })
+       }
     })
   },
   ItemDetail(e) {
     let id = e.detail.id
+    let type = e.currentTarget.dataset.type
     wx.navigateTo({
-      url: "/pages/home/detail/detail?id=" + id,
+      url: `/pages/home/detail/detail?id=${id}&type=${type}`,
     })
   },
 
   closeMask() {
     this.setData({
       flag: false
+    })
+  },
+
+  search(){
+    wx.navigateTo({
+      url: "/pages/home/searchLoad/index",
     })
   }
 });

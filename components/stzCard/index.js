@@ -27,6 +27,9 @@ Component({
   methods: {
     viewdetail(e) {
       this.triggerEvent('detail', { id: e.currentTarget.dataset['id'] });
+    },
+    handleMsg(val){
+      console.log(val,'?????')
     }
   }
 })

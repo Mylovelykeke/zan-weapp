@@ -1,0 +1,15 @@
+<!--pages/home/location/index.wxml-->
+<view class="search">
+  <vtu-search search-shape="circle" bg-color="white" placeholder="请输入小区，地铁站或地址" confirm-type="send" bind:confirm="confirm">
+    <picker mode="region" slot="prepend">
+      <view class="select"> {{region}}
+        <i class="iconfont icon-jiantouxia"></i>
+      </view>
+    </picker>
+  </vtu-search>
+</view>
+<view>
+  <i-cell-group i-class='main-border'>
+    <i-cell wx:for="{{locationList}}" wx:for-item="val" title="{{val.title}}" label='{{val.address}}' wx:key="index" bind:click="bindAddressItem" data-val="{{val}}"></i-cell>
+  </i-cell-group>
+</view>

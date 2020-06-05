@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "vtu-search": "/miniprogram_npm/vtuweapp/search/vtu-search",
+    "stz-card": "/components/stzCard/index"
+  }
+}

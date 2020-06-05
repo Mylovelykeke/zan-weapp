@@ -18,6 +18,7 @@ Page({
     plaVal:'我也说一句。。。。',
     parentCommentId:'',
     value:'',
+    type:0,
     userInfo: {
       name: '访客',
       avatar: 'https://profile.csdnimg.cn/9/2/9/3_xiasohuai'
@@ -30,8 +31,10 @@ Page({
    */
   onLoad: function(options) {
     let hostId = options.id
+    let type = options.type
     this.setData({
-      hostId: hostId
+      hostId: hostId,
+      type: type
     })
     this.OnAddViews(hostId)
     this.OnGetItemDetail(hostId)
@@ -78,13 +81,16 @@ Page({
         locationinfo,
         createAt
       } = res.data
+      content = content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
+        .replace(/<section/g, '<div')
+        .replace(/\/section>/g, '\div>');
       this.setData({
           itemInfo: res.data,
           userInfo:res.data.user,
           title: title,
           content: content,
           files: files,
-          locationinfo: JSON.parse(locationinfo),
+          location: JSON.parse(locationinfo),
           createAt: createAt
         }),
         setTimeout(() => {
@@ -151,6 +157,14 @@ Page({
   hiddenBar(){
     this.selectComponent('#towerId').hiddenBar()
   },
+  
+  getItemDetail(e){
+    let id = e.detail.id
+    wx.navigateTo({
+      url: "/pages/home/common_item_detail/index?id=" + id,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

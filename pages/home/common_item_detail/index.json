@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "common": "/components/common/index",
+    "chat-model": "/components/chat/index"
+  }
+}

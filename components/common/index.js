@@ -53,6 +53,12 @@ Component({
         name:name,
         id:id
       })
+    },
+    getItemDetail(e){
+      let id = e.currentTarget.dataset.id
+      this.triggerEvent("getItemDetail", {
+        id: id
+      })
     }
   }
 })
