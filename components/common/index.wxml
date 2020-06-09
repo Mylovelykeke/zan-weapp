@@ -3,13 +3,12 @@
   <view class="common-content" wx:for="{{comment}}" wx:key="index">
     <view>
       <view class="common-author">
-        <image src="{{item.user.avatarUrl}}" alt=""></image>
+        <image src="{{item.author.avatarUrl}}" alt=""></image>
       </view>
       <view class="common-main">
+      <!-- 作者 -->
         <view>
-          <span class="authorname" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{item.name}}'>{{item.name}}</span>
-          <i class="iconfont icon-jiantou" wx:if="{{item.replyUserName}}"></i>
-          <span bindtap="OnClickReplyName" data-id='{{item.parentCommentId}}' data-name='{{item.replyUserName}}' class="otherone">{{item.replyUserName || ''}}</span>
+          <span class="authorname" bindtap="OnClickReplyName" data-id='{{item.id}}' data-replyid="{{item.author.id}}" data-name='{{item.author.nickName}}'>{{item.author.nickName}}</span>
         </view>
         <view class="common-time">
           <span>{{item.createAt}}</span>
@@ -21,14 +20,16 @@
         <view class="child-bg" v-if="v.children">
           <view class="common-content common-content-child" wx:for="{{item.children[0]}}" wx:for-index="key" wx:key="key" wx:for-item="val" wx:show="key<2">
             <view wx:if="key<2">
+            <!-- 子集作者头像 -->
               <view class="common-author">
-                <image src="{{val.user.avatarUrl}}" alt=""></image>
+                <image src="{{val.author.avatarUrl}}" alt=""></image>
               </view>
               <view class="common-main">
-                <view style="width: calc(100%)">
-                  <span class="authorname" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{item.name}}'>{{val.name}}</span>
+                <view>
+                <!-- 子集作者姓名  父级 data-id 为parentCommentId-->
+                  <span class="authorname" bindtap="OnClickReplyName" data-id='{{item.id}}' data-replyid="{{val.author.id}}" data-name='{{val.author.nickName}}'>{{val.author.nickName}}</span>
                   <i class="iconfont icon-jiantou"></i>
-                  <span class="otherone" bindtap="OnClickReplyName" data-id='{{item.id}}' data-name='{{val.replyUserName}}'>{{val.replyUserName}}</span>
+                  <span class="otherone" bindtap="OnClickReplyName" data-id='{{item.id}}' data-replyid="{{val.replyUser.id}}" data-name='{{val.replyUser.nickName}}'>{{val.replyUser.nickName}}</span>
                 </view>
                 <view class="common-time">
                   <span>{{val.createAt}}</span>

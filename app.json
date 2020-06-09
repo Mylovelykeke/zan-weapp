@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/home/searchLoad/index",
     "pages/mine/main",
-    "pages/home/location/index",
-    "pages/home/detail/detail",
     "pages/msg/main",
     "pages/mine/post/index",
+    "pages/home/searchdetail/index",
+    "pages/home/searchLoad/index",
+    "pages/home/location/index",
+    "pages/home/detail/detail",
     "pages/mine/communities/index",
     "pages/report/index",
     "pages/home/write/index",
@@ -17,7 +18,6 @@
     "pages/mine/arbitration_item/index",
     "pages/msg/systeminfo/index",
     "pages/msg/likeinfo/index",
-    "pages/home/searchdetail/index",
     "pages/home/common_item_detail/index"
   ],
   "window": {

@@ -1,8 +1,10 @@
 <!--pages/home/common_item_detail/index.wxml-->
-<view class="responder">
-  <common comment='{{responderItem}}'></common>
-</view>
-<view class="reviewers">
-  <common comment='{{reviewersItem}}'></common>
+<view class="main">
+  <view class="responder">
+    <common comment='{{responderItem}}'></common>
+  </view>
+  <view class="reviewers">
+    <common comment='{{reviewersItem}}'></common>
+  </view>
 </view>
 <chat-model></chat-model>

@@ -1,14 +1,27 @@
 <!--pages/mine/post/index.wxml-->
 <view class="content">
   <view class="datemodel">
-    <view class="dateTime">
+    <!-- <view class="dateTime">
       <span>4</span>
       <span class="rule">/</span>
       <span>27</span>
-    </view>
+    </view> -->
     <view class="card">
-      <view wx:for="{{content}}" wx:key='index'>
-        {{item.title}}
+      <view class="card-content" wx:for="{{content}}" wx:key='index'>
+        <view class="card-title">
+          {{item.title}}
+        </view>
+        <view class="card-main">
+          {{item.summary}}
+        </view>
+        <view class="card-footer">
+          <view>
+          {{item.views}}次阅读
+          </view>
+          <view>
+          {{item.publishAt}}
+          </view>
+        </view>
       </view>
     </view>
   </view>

@@ -1,11 +1,11 @@
 /* pages/mine/post/index.wxss */
 
-.datemodel {
+/* .datemodel {
   display: flex;
-}
+} */
 
 .dateTime {
-  width: 100px;
+  width: 60px;
   padding: 10px;
 }
 
@@ -25,11 +25,31 @@
   font-size: 20px;
   font-weight: bold;
 }
-.card view{
-  font-weight: bold;
+
+.card {
+}
+
+.card .card-content {
+  word-break: break-all;
+  width: 100%;
   background: white;
-  line-height: 34px;
-  padding: 20rpx 15rpx; 
+  padding: 20rpx 15rpx;
   margin: 10rpx 0;
+  box-sizing: border-box;
   box-shadow: 0 1px 2px #cfcfcf;
+}
+
+.card-title {
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.card-footer {
+  display: flex;
+  font-size: 12px;
+  color: var(--font-hc);
+}
+
+.card-footer view {
+  margin-right: 10px;
 }

@@ -35,6 +35,7 @@ Page({
   },
 
   backSearch() {
+    console.log(11111111)
     wx.navigateTo({
       url: "/pages/home/searchLoad/index",
     })

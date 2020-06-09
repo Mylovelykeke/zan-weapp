@@ -14,7 +14,7 @@ Page({
     files: [],
     location: '',
     loading: true,
-    replyUserName:'',
+    replyUserId:'',
     plaVal:'我也说一句。。。。',
     parentCommentId:'',
     value:'',
@@ -44,7 +44,7 @@ Page({
     httpWX.post({
       url: '/article/' + id + '/views',
     }).then(res => {
-      console.log(res, '观看加1')
+      // console.log(res, '观看加1')
     })
   },
 
@@ -102,13 +102,16 @@ Page({
   },
 
   replymsg(e){
+    console.log(e,'??')
     let id = e.detail.id
     let name = e.detail.name
+    let replyUserId = e.detail.replyid
+    console.log(replyUserId)
     this.setData({
       focus:true,
       value:'',
-      replyUserName:name,
-      plaVal:'@'+name,
+      replyUserId: replyUserId,
+      plaVal: '@' + name,
       parentCommentId:id
     })
   },
@@ -128,17 +131,15 @@ Page({
   sendText(e) {
     console.log(e)
     let hostId = this.data.hostId
-    let replyUserName = this.data.replyUserName
+    let replyUserId = this.data.replyUserId
     let val = e.detail
     let parentCommentId = this.data.parentCommentId
     httpWX.post({
       url: '/comment',
       data: {
-        hostId: hostId,
-        name: app.globalData.userInfo.nickName,
-        replyUserName: replyUserName,
+        hostId: hostId, //文章id
+        replyUserId: replyUserId,
         openid: app.globalData.openid,
-        email: '1115796788',
         content: val,
         parentCommentId: parentCommentId,
         createByAdmin: false

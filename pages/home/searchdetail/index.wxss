@@ -1,1 +1,33 @@
 /* pages/home/searchdetail/index.wxss */
+.nav{
+  background: white;
+  padding:0 10px 10px 10px;
+  box-sizing: border-box;
+}
+.searchPanel {
+  height: 30px;
+  background: #f9f9f9;
+  border-radius: 100px;
+}
+
+.searchPanel_icon {
+  width: 40px;
+  height: 100%;
+  float: left;
+  line-height: 30px;
+  text-align: center;
+}
+
+.searchPanel_input {
+  width: calc(100% - 40px);
+  float: left;
+  height: 100%;
+}
+
+.searchPanel_input input {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  height: 100%;
+  color: black;
+}

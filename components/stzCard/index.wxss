@@ -4,6 +4,7 @@
 *************************************/
 .vtu-title{
   font-weight: bolder;
+  word-break: break-all;
   padding-bottom: 10px;
   box-sizing: border-box;
 }
@@ -111,6 +112,7 @@
 .vtu-news-many{
     width: 100%;
     height: auto;
+    word-break: break-all;
     display: inline-block;
 }
 .vtu-news-many-img{

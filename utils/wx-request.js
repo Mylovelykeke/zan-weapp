@@ -1,5 +1,5 @@
-// const host = 'http://localhost:4000/api'
-const host = 'http://superstarprogram.xyz:8081/api'
+const host = 'http://localhost:4000/api'
+// const host = 'http://superstarprogram.xyz:8081/api'
 
 function request(res) {
   let { url, method, data, header = {}, Domain = true} = res

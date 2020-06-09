@@ -30,7 +30,6 @@
   left: 10px;
   top: 50%;
   transform: translate(0, -50%);
-  background: #fff;
   border-radius: 100px;
   text-align: center;
   line-height: 30px;

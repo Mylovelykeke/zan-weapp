@@ -4,13 +4,13 @@ const bus = app.globalData.bus
 Page({
   data: {
     flag: false,
-    changeFlag:false,
+    changeFlag: false,
     current: 0,
     style: 7,
     tabValue: 'name2',
     contBarHeight: 0,
     newsList: [],
-    FZList:[],
+    FZList: [],
     windowHeight: 0,
     scrollViewHeight: 0
   },
@@ -34,18 +34,18 @@ Page({
   },
 
   change: function(e) {
-    if(!this.data.changeFlag){
+    if (!this.data.changeFlag) {
       this.OnGetList(1, e.detail.current)
       this.setData({
         current: e.detail.current,
-        changeFlag:true
+        changeFlag: true
+      })
+      setTimeout(() => {
+        this.setData({
+          changeFlag: false
         })
-        setTimeout(()=>{
-          this.setData({
-            changeFlag:false
-          })
-        },10)
-      }
+      }, 10)
+    }
   },
 
   headLoad(e) {
@@ -56,7 +56,7 @@ Page({
 
   onLoad() {
     this.contentHeight()
-    this.OnGetList(1,this.data.current)
+    this.OnGetList(1, this.data.current)
   },
 
   onShow() {
@@ -99,22 +99,22 @@ Page({
     httpWX.get({
       url: `/article?page=${page}&type=${type}`,
     }).then(res => {
-        let list = res.data[0]
-        list.map(data=>{
-          data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
-            .replace(/<section/g, '<div')
-            .replace(/\/section>/g, '\div>');
-            return data
+      let list = res.data[0]
+      list.map(data => {
+        data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
+          .replace(/<section/g, '<div')
+          .replace(/\/section>/g, '\div>');
+        return data
+      })
+      if (this.data.current == 0) {
+        this.setData({
+          newsList: list
         })
-       if(this.data.current == 0){
-         this.setData({
-           newsList: list
-         })
-       } else if (this.data.current == 1){
-         this.setData({
-           FZList: list
-         })
-       }
+      } else if (this.data.current == 1) {
+        this.setData({
+          FZList: list
+        })
+      }
     })
   },
   ItemDetail(e) {
@@ -131,9 +131,15 @@ Page({
     })
   },
 
-  search(){
+  search() {
     wx.navigateTo({
       url: "/pages/home/searchLoad/index",
+    })
+  },
+
+  getInfo() {
+    wx.switchTab({
+      url: "/pages/msg/main",
     })
   }
 });

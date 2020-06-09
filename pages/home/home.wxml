@@ -1,7 +1,11 @@
 <!--pages/home/home.wxml-->
 <view id="navbar">
   <vtu-navbar use-bar-slot show-nav-btn="{{false}}" navbar-class="style4NavBar" homebar-class="style4HomeBar" bg-color="#f0d264" bind:load="headLoad">
-    <view class="searchImg iconfont icon-share"></view>
+    <view class="searchImg" bindtap="getInfo">
+      <i class="iconfont icon-xx" style='font-size:22px;'>
+        <vtu-badge right="0px" top="-5px" is-dot></vtu-badge>
+      </i>
+    </view>
     <view class="searchPanel" bindtap="search">
       <view class="searchPanel_icon iconfont icon-sousuo"></view>
       <view class="searchPanel_input">
@@ -11,9 +15,9 @@
   </vtu-navbar>
 </view>
 <view id="noticeBar">
-  <vtu-noticeBar type="error" icon="iconfont icon-biaoxing" scroll  content="为庆祝祖国70周年，公司决定，国庆节放假10天，望告知。"></vtu-noticeBar>
+  <vtu-noticeBar type="error" icon="iconfont icon-biaoxing" scroll content="为庆祝祖国70周年，公司决定，国庆节放假10天，望告知。"></vtu-noticeBar>
 </view>
-<view id='header' class="Tab_Span" >
+<view id='header' class="Tab_Span">
   <vtu-tabs current="{{current}}" item-align="center" is-average="{{false}}" bind:change="change">
     <vtu-tab label="求租广场" name="name1"></vtu-tab>
     <vtu-tab label="房源" name="name2"></vtu-tab>
@@ -21,9 +25,9 @@
 </view>
 <!-- 拖拽区域 -->
 <view class="publish" bindtap="OnReleaseArticle">
-    <view class="fabu">
-        <i class="iconfont icon-fabu"></i>
-    </view>
+  <view class="fabu">
+    <i class="iconfont icon-fabu"></i>
+  </view>
 </view>
 <view>
   <vtu-swiperPanel height="{{scrollViewHeight}}px" current="{{current}}" bind:change="change">
@@ -37,7 +41,7 @@
         </view>{{index}}</view>
     </view>
     <view class="swiper" slot="name2">
-          <stz-card newsList='{{FZList}}' cardFlag="{{false}}" data-type='1' bind:detail="ItemDetail"></stz-card>
+      <stz-card newsList='{{FZList}}' cardFlag="{{false}}" data-type='1' bind:detail="ItemDetail"></stz-card>
     </view>
   </vtu-swiperPanel>
 </view>

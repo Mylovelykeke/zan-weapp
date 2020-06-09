@@ -49,9 +49,11 @@ Component({
       console.log(e)
       let name = e.currentTarget.dataset.name
       let id = e.currentTarget.dataset.id
+      let replyid = e.currentTarget.dataset.replyid
       this.triggerEvent("replymsg",{
         name:name,
-        id:id
+        id:id,
+        replyid: replyid
       })
     },
     getItemDetail(e){
