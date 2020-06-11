@@ -3,7 +3,7 @@
   <view class="responder">
     <common comment='{{responderItem}}'></common>
   </view>
-  <view class="reviewers">
+  <view class="reviewers" wx:if='{{reviewersItem.length>0}}'>
     <common comment='{{reviewersItem}}'></common>
   </view>
 </view>

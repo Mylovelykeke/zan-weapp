@@ -130,9 +130,10 @@ App({
           httpWX.get({
             url: '/user/logintoken?code=' + res.code
           }).then(res => {
-            if (res.data && !res.data.errcode) {
               this.globalData.openid = res.data.openid
-            }
+              if(this.openIdReadyCallback){
+                this.openIdReadyCallback(res)
+              }
           })
         }
       }

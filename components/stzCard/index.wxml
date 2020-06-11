@@ -26,7 +26,7 @@
         </view>
         <rich-text nodes="{{val.summary}}"> </rich-text>
         <view class="vtu-news-many-detail">
-          <span>123条评论</span>
+          <span>{{val.count}}条评论</span>
           <span>{{val.createAt}}</span>
         </view>
       </view>

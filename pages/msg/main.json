@@ -1,4 +1,6 @@
-{
+{ 
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
   "usingComponents": {
     "i-card": "/components/card/index",
     "i-cell-group": "/components/cell-group/index",

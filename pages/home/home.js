@@ -94,28 +94,36 @@ Page({
       });
     });
   },
-
-  OnGetList(page, type) {
-    httpWX.get({
-      url: `/article?page=${page}&type=${type}`,
-    }).then(res => {
-      let list = res.data[0]
-      list.map(data => {
-        data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
-          .replace(/<section/g, '<div')
-          .replace(/\/section>/g, '\div>');
-        return data
-      })
-      if (this.data.current == 0) {
-        this.setData({
-          newsList: list
-        })
-      } else if (this.data.current == 1) {
-        this.setData({
-          FZList: list
-        })
-      }
+ async onGetCount(hostId){
+    let result =await httpWX.get({
+      url: `/comment/count/${hostId}`,
     })
+   if (result.statusCode == 200){
+     return result.data
+   }
+  },
+
+  async OnGetList(page, type) {
+    let res = await httpWX.get({
+      url: `/article?page=${page}&type=${type}`,
+    })
+    let list = res.data[0]
+    for(let data of list){
+      let count = await this.onGetCount(data.id)
+      data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
+        .replace(/<section/g, '<div')
+        .replace(/\/section>/g, '\div>');
+      Object.assign(data, {count: count})
+    }
+    if (this.data.current == 0) {
+      this.setData({
+        newsList: list
+      })
+    } else if (this.data.current == 1) {
+      this.setData({
+        FZList: list
+      })
+    }
   },
   ItemDetail(e) {
     let id = e.detail.id

@@ -1,26 +1,14 @@
 // pages/msg/main.js
+const httpWX = require('../../utils/wx-request.js')
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    comment: [
-      {
-        responder: "有毒的黄同学",
-        headeImg: 'https://profile.csdnimg.cn/9/2/9/3_xiasohuai',
-        reviewers: "傲娇的",
-        time: "2016-09-05",
-        content: "你说得对"
-      },
-      {
-        responder: "傲娇的",
-        reviewers: "有毒的黄同学",
-        headeImg: 'https://profile.csdnimg.cn/9/2/9/3_xiasohuai',
-        time: "2016-09-05",
-        content: "很强"
-      }
-    ],
+    userId: '',
+    comment: [],
     actions: [
       {
         id: 0,
@@ -55,12 +43,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let userId = app.globalData.openid
+    if (!userId) {
+      app.openIdReadyCallback = res => {
+        userId = res.data.openid
+        this.setData({
+          userId: userId
+        })
+        this.getMsgList(userId)
+      }
+    } else {
+      this.setData({
+        userId: userId
+      })
+      this.getMsgList(userId)
+    }
   },
 
-  handleClick() {
+  async getMsgList(userId){
+    let result = await httpWX.get({
+      url: `/comment/user/${userId}`,
+    })
+    if(result.statusCode == 200){
+      this.setData({
+        comment:result.data
+      })
+    }
+  },
+  handleClick(e) {
+    let id = e.currentTarget.dataset.val.parentCommentId ? e.currentTarget.dataset.val.parentCommentId : e.currentTarget.dataset.val.id
     wx.navigateTo({
-      url: "/pages/msg/chat/index"
+      url: "/pages/home/common_item_detail/index?id=" + id,
     })
   },
   /**
@@ -74,7 +87,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -95,7 +108,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.getMsgList(this.data.userId)
+    setTimeout(function () {
+      // complete
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    }, 1500);
   },
 
   /**

@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/mine/main",
     "pages/msg/main",
+    "pages/mine/main",
     "pages/mine/post/index",
     "pages/home/searchdetail/index",
     "pages/home/searchLoad/index",

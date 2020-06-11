@@ -8,11 +8,11 @@
             <image class="notice-img dy" src="../../assets/images/dy.png" alt=""></image>
           </view>
         </i-cell>
-        <i-cell title="点赞" is-link url="/pages/msg/likeinfo/index">
+        <!-- <i-cell title="点赞" is-link url="/pages/msg/likeinfo/index">
           <view slot="icon">
             <image class="notice-img" src="../../assets/images/dz.png" alt=""></image>
           </view>
-        </i-cell>
+        </i-cell> -->
       </i-cell-group>
     </view>
   </view>
@@ -20,20 +20,20 @@
     <view wx:for="{{comment}}" wx:key="index">
       <i-swipeout i-class="i-swipeout-demo-item" unclosable='{{false}}' actions='{{actions}}' bindtap="handleClickItem">
         <view slot="content">
-          <view bindtap="handleClick">
+          <view data-val="{{item.message}}" bindtap="handleClick">
             <view class="i-swipeout-image">
-              <image src="{{item.headeImg}}" alt=""></image>
+              <image src="{{item.message.author.avatarUrl}}" alt=""></image>
             </view>
             <view class="i-swipeout-des">
               <view class="i-swipeout-des-h2">
                 <view>
-                  {{item.responder}}
+                  {{item.message.author.nickName}}
                 </view>
                 <view>
-                  {{item.time}}
+                  {{item.createAt}}
                 </view>
               </view>
-              <view class="i-swipeout-des-detail">{{item.content}}.</view>
+              <view class="i-swipeout-des-detail">{{item.message.content}}</view>
             </view>
           </view>
         </view>
