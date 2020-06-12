@@ -15,8 +15,9 @@
   </vtu-navbar>
 </view>
 <view id="noticeBar">
-  <vtu-noticeBar type="error" icon="iconfont icon-biaoxing" scroll content="为庆祝祖国70周年，公司决定，国庆节放假10天，望告知。"></vtu-noticeBar>
+  <!-- <vtu-noticeBar type="error" icon="iconfont icon-biaoxing" scroll content="为庆祝祖国70周年，公司决定，国庆节放假10天，望告知。"></vtu-noticeBar> -->
 </view>
+
 <view id='header' class="Tab_Span">
   <vtu-tabs current="{{current}}" item-align="center" is-average="{{false}}" bind:change="change">
     <vtu-tab label="求租广场" name="name1"></vtu-tab>

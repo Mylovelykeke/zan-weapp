@@ -71,6 +71,7 @@ Page({
   },
 
   contentInput(e) {
+    console.log(e)
     this.setData({
       content: e.detail.value
     })
@@ -132,7 +133,6 @@ Page({
           wx.switchTab({
             url: '/pages/home/home',
             success: function () {
-              console.log(2222)
               var page = getCurrentPages().pop();
               console.log('page', page)
               if (page == undefined || page == null) return;

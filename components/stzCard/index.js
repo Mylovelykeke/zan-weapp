@@ -11,6 +11,10 @@ Component({
     cardFlag:{
       type: Boolean,
       value:true
+    },
+    footer:{
+      type: Boolean,
+      value: true
     }
   },
 
@@ -18,7 +22,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    
+
   },
 
   /**

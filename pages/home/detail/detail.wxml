@@ -30,12 +30,12 @@
     <view class="detail_userinfo">
       <image class="skeleton-rect" src="{{userInfo.avatarUrl}}" alt=""></image>
       <span class="user-name skeleton-rect">{{userInfo.nickName}}</span>
-      <span class="attest skeleton-rect">
+      <!-- <span class="attest skeleton-rect">
         <i class="iconfont icon-shimingrenzheng"></i>
       </span>
       <span class="flower" wx:for="12345" wx:key="count">
         <i class="iconfont icon-icon-test"></i>
-      </span>
+      </span> -->
     </view>
     <view class="content" bindtap="OnClickReplyName">
       <view class="detail-item">
@@ -54,27 +54,27 @@
       </view>
       <rich-text class="article" nodes="{{content}}">
       </rich-text>
-      <view class="content-footer" wx:if="{{type==1}}">
+      <view class="content-footer">
         <view class="skeleton-rect">
-          发表于 {{itemInfo&&itemInfo.createAt}}
+          发表于 {{itemInfo&&itemInfo.publishAt}}
         </view>
-        <view class="content-phone">
+        <!-- <view class="content-phone">
           <view>
             <i class="iconfont icon-dianhua"></i>
             <span>联系电话</span>
             <span class="content-count">200人咨询</span>
           </view>
           <span>获取</span>
-        </view>
+        </view> -->
       </view>
     </view>
-    <view class="notice" wx:if="{{type==1}}">
+    <view class="notice">
       <view class="notice-title">
         <span>租房须知</span>
         <i class="iconfont icon-youjiantou"></i>
       </view>
       <span>若房东向您索要中介费，你可举报！</span>
-      <view class="report" bindtap="OnclickReport">
+      <view class="report" data-postId=""  bindtap="OnclickReport">
         <i class="iconfont icon-jubao"></i>
         <view><span>举报</span></view>
       </view>

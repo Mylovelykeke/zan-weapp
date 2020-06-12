@@ -27,7 +27,7 @@
     <!-- <titleBar :titleColor='"rgb(255, 218, 68)"' :title="title" /> -->
     <view class="history_order">
       <view bindtap="toPostings">
-        <i>24</i>
+        <i>{{postCount}}</i>
         我的帖子
       </view>
       <view bindtap="tofavorite">

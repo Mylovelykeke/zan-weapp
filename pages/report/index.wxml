@@ -3,7 +3,7 @@
   <view class="report">
     <span class="title">帖子信息</span>
     <view>
-      <stz-card  newsList='{{content}}'  />
+      <stz-card footer='{{false}}' newsList='{{content}}'  />
     </view>
   </view>
   <view class="report_type">

@@ -1,4 +1,5 @@
 // pages/main/main.js
+const httpWX = require('../../utils/wx-request.js')
 const app = getApp()
 var bus = app.globalData.bus
 Page({
@@ -8,7 +9,8 @@ Page({
    */
   data: {
     userInfo: null,
-    flag: false
+    flag: false,
+    postCount:0
   },
 
   /**
@@ -17,11 +19,13 @@ Page({
   onLoad: function(options) {
     console.log(app)
     if (app.globalData.userInfo) {
+      this.myPostList()
       this.setData({
         userInfo: app.globalData.userInfo
       })
     } else {
       app.userInfoReadyCallback = res => {
+        this.myPostList()
         this.setData({
           userInfo: res.userInfo
         })
@@ -63,6 +67,19 @@ Page({
     this.setData({
       flag: false
     })
+  },
+
+  async myPostList() {
+    let openid = app.globalData.openid
+    let results = await httpWX.get({
+      url: `/article/userid/${openid}`,
+    })
+    if (results.statusCode == 200) {
+      let data1 = results.data.length
+      this.setData({
+        postCount: data1
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

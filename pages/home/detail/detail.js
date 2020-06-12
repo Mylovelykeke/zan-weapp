@@ -48,9 +48,10 @@ Page({
     })
   },
 
-  OnclickReport() {
+  OnclickReport(e) {
+    let postId = this.data.hostId
     wx.navigateTo({
-      url: "/pages/report/index"
+      url: "/pages/report/index?postId=" + postId
     })
   },
 

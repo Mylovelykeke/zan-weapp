@@ -22,7 +22,7 @@
     </view>
     <!-- input -->
     <view class="main">
-      <textarea name="" placeholder="尽情发挥吧 ~" bindinput='contentInput' value='{{content}}'></textarea>
+      <textarea name="" placeholder="尽情发挥吧 ~" maxlength='1000' bindinput='contentInput' value='{{content}}'></textarea>
     </view>
     <!-- 其他信息 -->
     <!-- <wx-imgPicker imgList='{{ImgArray}}'/> -->

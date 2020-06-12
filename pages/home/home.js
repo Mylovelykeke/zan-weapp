@@ -149,5 +149,13 @@ Page({
     wx.switchTab({
       url: "/pages/msg/main",
     })
+  },
+  
+  bindscrolltoupper(){
+
+  },
+  
+  bindscrolltolower(){
+
   }
 });

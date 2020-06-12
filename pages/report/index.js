@@ -1,4 +1,5 @@
 // pages/report/index.js
+const httpWX = require('../../utils/wx-request.js')
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
   data: {
     sum:0,
     value: "",
+    postId:'',
     ITEM: null,
     content: [{
       time: '2012-12-08 02.14',
@@ -18,16 +20,28 @@ Page({
       title: '安静速度快快的经开是哪个出售！！！！！',
       brief: 'tip: 如果在 bindchange 的事件回调函数中使用 setData 改变 current 值，则有可能导致 setData 被不停地调用，因而通常情况下请在改变 current 值前检测 source 字段来判断是否是由于用户触摸引起。'
     }],
-    list: ['低俗色情', '垃圾广告', '内容低俗无意义', '辱骂攻击', '其他违法信息', '抄袭我的内容', '暴露我的隐私', '内容里有关无我的不实描述']
+    list: ['低俗色情', '垃圾广告', '内容低俗无意义', '辱骂攻击', '其他违法信息', '抄袭我的内容', '暴露我的隐私', '内容里有关于我的不实描述']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let postId = options.postId
+    this.OnGetItemDetail(postId)
+    this.setData({
+      postId: postId
+    })
   },
-
+  OnGetItemDetail(id) {
+    httpWX.get({
+      url: '/article/' + id,
+    }).then(res => {
+      this.setData({
+        content: new Array(res.data)
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
