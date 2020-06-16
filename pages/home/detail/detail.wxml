@@ -10,7 +10,7 @@
                             <video
                             :autoplay='false' 
                             loop
-                            class="swiper-item"
+                            class="swiper-item" 
                             :show-play-btn='true'
                             :controls='true'
                             objectFit="fill" 

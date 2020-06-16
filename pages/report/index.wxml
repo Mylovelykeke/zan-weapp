@@ -1,5 +1,5 @@
 <!--pages/report/index.wxml-->
-<view>
+<view class='content'>
   <view class="report">
     <span class="title">帖子信息</span>
     <view>
@@ -20,6 +20,6 @@
     </view>
   </view>
   <view class="vtubtn">
-    <vtu-btn type="primary" bindtap="edit">发布</vtu-btn>
+    <vtu-btn type="primary" bindtap="edit" disabled="{{ITEM===null}}">提交</vtu-btn>
   </view>
 </view>

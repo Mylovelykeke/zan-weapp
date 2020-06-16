@@ -1,5 +1,5 @@
 <!--miniprogram_npm/vtuweapp/template/news/template1.wxml-->
-<view wx:if="{{true}}">
+<view class="content" wx:if="{{true}}">
   <view class="vtu-news" wx:for='{{newsList}}' wx:key="index" wx:for-item="val" data-id="{{val.id}}" bindtap="viewdetail">
     <view wx:if="{{val.type!=1}}">
       <view class="vtu-title">

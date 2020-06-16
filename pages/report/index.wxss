@@ -1,4 +1,7 @@
 /* pages/report/index.wxss */
+.content{
+  padding-bottom:20px; 
+}
 
 .report_account, .report_type, .report {
   background-color: white;

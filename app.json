@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/msg/main",
     "pages/mine/main",
+    "pages/msg/main",
+    "pages/mine/arbitration/index",
     "pages/mine/post/index",
     "pages/home/searchdetail/index",
     "pages/home/searchLoad/index",
@@ -13,7 +14,6 @@
     "pages/home/write/index",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/mine/arbitration/index",
     "pages/mine/favorite/index",
     "pages/mine/arbitration_item/index",
     "pages/msg/systeminfo/index",

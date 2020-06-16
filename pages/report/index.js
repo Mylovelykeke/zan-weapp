@@ -1,5 +1,6 @@
 // pages/report/index.js
 const httpWX = require('../../utils/wx-request.js')
+const app = getApp()
 Page({
 
   /**
@@ -42,20 +43,47 @@ Page({
       })
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
+  watchVal(e){
+    let value = e.detail.value;
+    let sum = e.detail.cursor
+    this.setData({
+      sum: sum,
+      value: value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  handleItem(e) {
+    let ITEM = e.currentTarget.dataset.item
+    this.setData({
+      ITEM: ITEM
+    })
   },
 
+  async edit(){
+    let reportedId = this.data.postId;
+    let reasonType = this.data.ITEM;
+    let author = app.globalData.openid
+    let value = this.data.value
+    if (reasonType===null || !reportedId || !author){
+      return
+    }
+    let results = httpWX.post({
+      url:'/report',
+      data:{
+        author: author ,
+        reasonType: reasonType,
+        reason: value,
+        reportedType:'0',
+        reportedId: reportedId
+      }
+    })
+    wx.showToast({
+      title: '提交成功',
+      icon: 'success',
+      duration: 2000
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -63,13 +91,6 @@ Page({
 
   },
 
-  handleItem(e) {
-    console.log(e)
-    let ITEM = e.currentTarget.dataset.item
-    this.setData({
-      ITEM: ITEM
-    })
-  },
   /**
    * 生命周期函数--监听页面卸载
    */

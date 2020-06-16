@@ -22,7 +22,8 @@
     </view>
     <!-- input -->
     <view class="main">
-      <textarea name="" placeholder="尽情发挥吧 ~" maxlength='1000' bindinput='contentInput' value='{{content}}'></textarea>
+        <editor id="editor" class="ql-container" placeholder="尽情发挥吧 ~" bindinput='contentInput'></editor>
+      <!-- <textarea name="" placeholder="尽情发挥吧 ~" maxlength='1000' bindinput='contentInput' value='{{content}}'></textarea> -->
     </view>
     <!-- 其他信息 -->
     <!-- <wx-imgPicker imgList='{{ImgArray}}'/> -->

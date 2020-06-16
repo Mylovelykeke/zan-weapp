@@ -1,4 +1,5 @@
 <!--pages/mine/arbitration/index.wxml-->
+<wxs src="../../../utils/utils.wxs" module ="utils"/>
 <view>
         <view class="header">
             <span>仲裁大厅</span>
@@ -8,17 +9,15 @@
             </span>
         </view>
         <view class="content">
-            <view class="main" wx:for="10" wx:key="index"> 
-                <view class="title">评论被举报为(包含不友善内容)</view>
+            <view class="main" wx:for="{{content}}" wx:key="index"> 
+                <view class="title">{{utils.filterReportType(item.reportedType)}}被举报为({{utils.filterReasonType(item.reasonType)}})</view>
                 <view class="rep">
                     <view class="img">
-                        <image src="https://profile.csdnimg.cn/C/9/6/3_eva3288" alt=""></image>
+                        <image src="{{item.article.user.avatarUrl}}" alt=""></image>
                     </view>
                     <view class="repcontent">
-                       <view class="author">大肆夸奖打瞌睡的卡上</view>
-                       <view class="violation">
-                         实打实的和卡仕达卡仕达看见1111111111111111111111111111哈萨克接电话大苏打实打实大苏打实打实打算
-                       </view>
+                       <view class="author">{{item.article.user.nickName}}</view>
+                       <rich-text  class="violation" nodes="{{item.article.summary}}"></rich-text>
                     </view>
                 </view>
                 <view>

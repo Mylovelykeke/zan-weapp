@@ -71,9 +71,8 @@ Page({
   },
 
   contentInput(e) {
-    console.log(e)
     this.setData({
-      content: e.detail.value
+      content: e.detail.html
     })
   },
 
@@ -84,6 +83,7 @@ Page({
   },
 
   edit() {
+
     if (!this.data.title) {
       Notify({
         type: 'warning',

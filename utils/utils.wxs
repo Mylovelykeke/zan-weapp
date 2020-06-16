@@ -1,0 +1,36 @@
+var filterReportType = function(index) {
+  if (index === '0') {
+    return '文章'
+  } else if (index === '1') {
+    return '评论'
+  } else if (index === '2') {
+    return '用户'
+  } else {
+    throw new Error('错误类型')
+  }
+}
+
+var filterReasonType = function(index) {
+  switch (index) {
+    case '0':
+    return '低俗色情';
+    case '1':
+      return '垃圾广告';
+    case '2':
+      return '内容低俗无意义';
+    case '3':
+      return '辱骂攻击';
+    case '4':
+      return '其他违法信息';
+    case '5':
+      return '抄袭我的内容';
+    case '6':
+      return '暴露我的隐私';
+    case '7':
+      return '内容里有关于我的不实描述';
+  }
+}
+module.exports = {
+  filterReportType: filterReportType,
+  filterReasonType: filterReasonType
+}
