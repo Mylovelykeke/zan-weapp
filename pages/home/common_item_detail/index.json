@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "common": "/components/common/index",
-    "chat-model": "/components/chat/index"
+    "chat-model": "/components/chat/index",
+    "stz-skeleton": "/components/skeleton/index"
   }
 }

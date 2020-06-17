@@ -1,6 +1,43 @@
 <!--components/skeleton/index.wxml-->
 <view class="wrap">
-  <view wx:for="{{skeletonRectLists}}" wx:key='item' class="chiaroscuro" style="width:{{item.width}}px;height:{{item.height}}px;background-color:rgba(233, 2, 233,1);position:absolute;left:{{item.left}}px;top:{{item.top}}px">
+  <view wx:if='{{flag}}'>
+    <view wx:for="{{skeletonRectLists}}" wx:key='item' class="chiaroscuro" style="width:{{item.width}}px;height:{{item.height}}px;background-color:rgba(233, 2, 233,1);position:absolute;left:{{item.left}}px;top:{{item.top}}px">
+    </view>
   </view>
+  <view wx:else>
+    <view class="radius">
+      <view class="main">
+        <view class="header chiaroscuro"></view>
+        <view class="name chiaroscuro"></view>
+      </view>
+      <view class="clearfix">
+        <view class="chiaroscuro content">
 
+        </view>
+        <view class="chiaroscuro content">
+
+        </view>
+        <view class="chiaroscuro content">
+
+        </view>
+      </view>
+    </view>
+    <view class="radius">
+      <view class="main">
+        <view class="header chiaroscuro"></view>
+        <view class="name chiaroscuro"></view>
+      </view>
+      <view class="clearfix">
+        <view class="chiaroscuro content">
+
+        </view>
+        <view class="chiaroscuro content">
+
+        </view>
+        <view class="chiaroscuro content">
+
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

@@ -1,4 +1,5 @@
 <!--pages/home/common_item_detail/index.wxml-->
+<stz-skeleton wx:if="{{loading}}" flag='{{false}}'></stz-skeleton>
 <view class="main">
   <view class="responder">
     <common comment='{{responderItem}}'></common>

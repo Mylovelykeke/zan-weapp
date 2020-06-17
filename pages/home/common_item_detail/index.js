@@ -13,7 +13,8 @@ Page({
     plaVal: '我也说一句。。。。',
     replyUserName: '',
     hostId: '',
-    parentCommentId: ''
+    parentCommentId: '',
+    loading:true
   },
 
   /**
@@ -36,6 +37,11 @@ Page({
         reviewersItem: results.data.children,
         showSkeleton:false
       })
+      setTimeout(() => {
+        this.setData({
+          loading: false
+        })
+      }, 500)
     }
   },
 

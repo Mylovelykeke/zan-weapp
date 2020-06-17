@@ -34,6 +34,9 @@ Component({
     },
     handleMsg(val){
       console.log(val,'?????')
+    },
+    onImageError(e){
+      console.log(e)
     }
   }
 })

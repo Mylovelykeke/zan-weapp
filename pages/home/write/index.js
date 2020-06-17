@@ -83,7 +83,6 @@ Page({
   },
 
   edit() {
-
     if (!this.data.title) {
       Notify({
         type: 'warning',
@@ -101,7 +100,7 @@ Page({
     const arr = this.data.imgList.map(path => {
       return new Promise((resolve, reject) => {
         wx.uploadFile({
-          url: 'http://www.superstarprogram.xyz:8081/api/file/upload',
+          url: httpWX.host+'/file/upload',
           filePath: path.url,
           name: 'file',
           method: 'POST', //请求方式

@@ -21,8 +21,8 @@
       </view>
       <view class="vtu-news-many">
         <view class="vtu-news-many-img" wx:if='{{val.files.length>0}}'>
-          <view class="vtu-news-many-img-li" wx:for="{{val.files}}" wx:key="index" wx:for-item="img">
-            <image src="{{img.url}}" mode="aspectFill"></image>
+          <view class="vtu-news-many-img-li" wx:for="{{val.files}}" wx:key="index" wx:for-item="img" wx:for-index="idx">
+            <image src="{{img.url}}"  mode="aspectFill"></image>
           </view>
         </view>
         <rich-text nodes="{{val.summary}}"> </rich-text>

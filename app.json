@@ -2,9 +2,9 @@
   "pages": [
     "pages/home/home",
     "pages/mine/main",
+    "pages/mine/post/index",
     "pages/msg/main",
     "pages/mine/arbitration/index",
-    "pages/mine/post/index",
     "pages/home/searchdetail/index",
     "pages/home/searchLoad/index",
     "pages/home/location/index",

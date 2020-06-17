@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content: []
+    content: [],
+    show:false
   },
 
   /**
@@ -28,6 +29,20 @@ Page({
         content: data1
       })
     }
+  },
+
+  getDetail(e){
+    let val = e.currentTarget.dataset.val
+    let {id, type} = val
+    wx.navigateTo({
+      url: `/pages/home/detail/detail?id=${id}&type=${type}`,
+    })
+  },
+
+  setting(){
+    this.setData({
+      show:true
+    })
   },
 
   /**

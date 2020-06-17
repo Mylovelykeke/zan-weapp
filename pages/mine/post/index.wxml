@@ -1,25 +1,41 @@
 <!--pages/mine/post/index.wxml-->
+<vtu-prop show="{{show}}" show-cancel cancel-label="取消">
+  <view class="prop-content">
+    <view class='cell'>
+      <icon class="iconfont icon-shoucang"></icon>
+      <view>收藏</view>
+    </view>
+    <view class='cell'>
+      <icon class="iconfont icon-bianji"></icon>
+      <view>编辑文章</view>
+    </view>
+    <view class='cell'>
+      <icon class="iconfont icon-shanchu red"></icon>
+      <view class="red">删除</view>
+    </view>
+  </view>
+</vtu-prop>
 <view class="content">
   <view class="datemodel">
-    <!-- <view class="dateTime">
-      <span>4</span>
-      <span class="rule">/</span>
-      <span>27</span>
-    </view> -->
     <view class="card">
       <view class="card-content" wx:for="{{content}}" wx:key='index'>
+
         <view class="card-title">
           {{item.title}}
         </view>
-        <view class="card-main">
-          {{item.summary}}
+
+        <view class="card-main" data-val='{{item}}' bindtap="getDetail">
+          <rich-text nodes="{{item.summary}}"></rich-text>
         </view>
         <view class="card-footer">
           <view>
-          {{item.views}}次阅读
+            {{item.views}}次阅读
           </view>
           <view>
-          {{item.publishAt}}
+            {{item.publishAt}}
+          </view>
+          <view class="setting" data-id="{{item.id}}" catchtap="setting">
+            <icon class="iconfont icon-qita"></icon>
           </view>
         </view>
       </view>
