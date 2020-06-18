@@ -94,13 +94,13 @@ Page({
       });
     });
   },
- async onGetCount(hostId){
-    let result =await httpWX.get({
+  async onGetCount(hostId) {
+    let result = await httpWX.get({
       url: `/comment/count/${hostId}`,
     })
-   if (result.statusCode == 200){
-     return result.data
-   }
+    if (result.statusCode == 200) {
+      return result.data
+    }
   },
 
   async OnGetList(page, type) {
@@ -108,12 +108,19 @@ Page({
       url: `/article?page=${page}&type=${type}`,
     })
     let list = res.data[0]
-    for(let data of list){
+    for (let data of list) {
       let count = await this.onGetCount(data.id)
+      let files = []
+      if (data.files.length > 0) {
+        files = data.files.slice(0,3)
+      }
       data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
         .replace(/<section/g, '<div')
         .replace(/\/section>/g, '\div>');
-      Object.assign(data, {count: count})
+      Object.assign(data, {
+        count: count,
+        files: files
+      })
     }
     if (this.data.current == 0) {
       this.setData({
@@ -150,12 +157,12 @@ Page({
       url: "/pages/msg/main",
     })
   },
-  
-  bindscrolltoupper(){
+
+  bindscrolltoupper() {
 
   },
-  
-  bindscrolltolower(){
+
+  bindscrolltolower() {
 
   }
 });

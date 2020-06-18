@@ -1,4 +1,5 @@
 <!--pages/mine/post/index.wxml-->
+<vtu-dialog id="Vtu-Dialog"></vtu-dialog>
 <vtu-prop show="{{show}}" show-cancel cancel-label="取消">
   <view class="prop-content">
     <view class='cell'>
@@ -7,9 +8,9 @@
     </view>
     <view class='cell'>
       <icon class="iconfont icon-bianji"></icon>
-      <view>编辑文章</view>
+      <button class="btn" open-type="share">转发</button>
     </view>
-    <view class='cell'>
+    <view class='cell' bindtap="deleteArticle">
       <icon class="iconfont icon-shanchu red"></icon>
       <view class="red">删除</view>
     </view>
@@ -18,14 +19,20 @@
 <view class="content">
   <view class="datemodel">
     <view class="card">
-      <view class="card-content" wx:for="{{content}}" wx:key='index'>
+      <view class="{{flag?'card-content flag':'card-content'}}" wx:for="{{content}}" wx:key='index'>
 
-        <view class="card-title">
-          {{item.title}}
-        </view>
-
-        <view class="card-main" data-val='{{item}}' bindtap="getDetail">
-          <rich-text nodes="{{item.summary}}"></rich-text>
+        <view  data-val='{{item}}' bindtouchstart="confirm" bindtap="getDetail"  data-idx="{{index}}">
+          <view class="card-title">
+            {{item.title}}
+          </view>
+          <view class="vtu-news-many-img" wx:if='{{item.files.length>0}}'>
+            <view class="vtu-news-many-img-li" wx:for="{{item.files}}" wx:key="index" wx:for-item="img" wx:for-index="idx">
+              <image src="{{img.url}}" mode="aspectFill"></image>
+            </view>
+          </view>
+          <view class="card-main">
+            <rich-text nodes="{{item.summary}}"></rich-text>
+          </view>
         </view>
         <view class="card-footer">
           <view>
@@ -34,8 +41,8 @@
           <view>
             {{item.publishAt}}
           </view>
-          <view class="setting" data-id="{{item.id}}" catchtap="setting">
-            <icon class="iconfont icon-qita"></icon>
+          <view class="setting">
+            <icon class="iconfont icon-qita"  data-id="{{item.id}}" catchtap="setting"></icon>
           </view>
         </view>
       </view>

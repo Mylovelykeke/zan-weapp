@@ -27,14 +27,20 @@ Page({
     }
     ],
     imgList: [],
-    flag: false
+    flag: false,
+    articleid:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (options.articleid){
+      this.setData({
+        articleid: options.articleid
+      })
+      this.getEditMsg(options.articleid)
+    }
   },
 
   onClickHide() {
@@ -81,6 +87,26 @@ Page({
       url: "/pages/home/location/index",
     })
   },
+  
+  // async getEditMsg(id){
+  //   let results =await httpWX.get({
+  //     url: '/article/' + id
+  //   })
+  //   if (results.success){
+  //     let { title, content, files} = results.data
+  //     let imgList = files.map(item=>{
+  //       return {
+  //         url: item.url
+  //       }
+  //     })
+  //     this.onEditorReady(content)
+  //     this.setData({
+  //       title: title,
+  //       content: content,
+  //       imgList: imgList
+  //     })
+  //   }
+  // },
 
   edit() {
     if (!this.data.title) {

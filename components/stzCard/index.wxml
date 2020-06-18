@@ -16,13 +16,12 @@
             <span>{{val.user.role == 'admin'?'管理员':'访客'}}</span>
           </view>
         </view>
-        <!-----  <view class="vtu-news-user-btn bg-orange-light">+ 关注</view>------>
-
+        <!-- <view class="vtu-news-user-btn bg-orange-light">+ 关注</view> -->
       </view>
       <view class="vtu-news-many">
         <view class="vtu-news-many-img" wx:if='{{val.files.length>0}}'>
           <view class="vtu-news-many-img-li" wx:for="{{val.files}}" wx:key="index" wx:for-item="img" wx:for-index="idx">
-            <image src="{{img.url}}"  mode="aspectFill"></image>
+            <image src="{{img.url}}" mode="aspectFill"  data-item='{{val.files}}' data-currenturl='{{img.url}}'></image>
           </view>
         </view>
         <rich-text nodes="{{val.summary}}"> </rich-text>
@@ -31,11 +30,6 @@
           <span>{{val.publishAt}}</span>
         </view>
       </view>
-      <!-- <view class="vtu-news-tool">
-      <view class="vtu-news-tool-li"><i class="iconfont icon-share"></i>转发</view>
-      <view class="vtu-news-tool-li"><i class="iconfont icon-yijian"></i>评论</view>
-      <view class="vtu-news-tool-li"><i class="iconfont icon-zanshangshouyi"></i>点赞</view>
-    </view> -->
     </view>
     <view class="vtu-news-single" wx:else>
       <view class="vtu-news-single-info" style="width:{{val.files.length>0?'':'100%'}}">

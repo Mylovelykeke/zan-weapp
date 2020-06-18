@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "stz-card": "/components/stzCard/index",
-    "vtu-prop": "/miniprogram_npm/vtuweapp/prop/vtu-prop"
+    "vtu-prop": "/miniprogram_npm/vtuweapp/prop/vtu-prop",
+    "vtu-dialog": "/miniprogram_npm/vtuweapp/dialog/vtu-dialog"
   }
 }

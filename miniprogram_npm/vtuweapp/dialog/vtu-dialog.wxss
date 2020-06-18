@@ -23,6 +23,7 @@
     box-shadow: 0px 0px 5px #6e6e6e;
     max-height: 80%;
     border-radius: 5px;
+    overflow: hidden;
 }
 .Vtu_Dialog_Center_Common{
     width: 100%;
@@ -73,7 +74,6 @@
     width: calc(100% - 40px);
     margin: 15px 20px 15px 20px;
     font-size: 14px;
-    color: var(--font-hc);
     line-height: 20px;
     overflow: hidden;
 }

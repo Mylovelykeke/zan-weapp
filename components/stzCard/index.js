@@ -37,6 +37,22 @@ Component({
     },
     onImageError(e){
       console.log(e)
-    }
+    },
+    showImage(e) {
+      let item = e.currentTarget.dataset.item
+      let currenturl = e.currentTarget.dataset.currenturl
+      //图片预览
+      let urls = item.map(data => {
+        return data.url
+      })
+      wx.previewImage({
+        current: currenturl, // 当前显示图片的http链接
+        urls: urls, // 需要预览的图片http链接列表
+        success: function (res) { },
+        fail: function (res) {
+          console.log(res);
+        },
+      })
+    },
   }
 })

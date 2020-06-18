@@ -20,10 +20,12 @@ function request(res) {
         resolve(res.data)
       },
       fail: function(res) {
+        console.log(res,'??')
         // wx.hideLoading()
         reject(false)
       },
-      complete: function() {
+      complete: function(res) {
+        console.log(res, '?')
         // wx.hideLoading()
       }
     })

@@ -3,9 +3,9 @@
   <view class="Vtu_Dialog_Mask mask-class" animation="{{maskAnimation}}" bindtap="{{closeOnClickOverlay?'closeDialog':''}}" wx:else></view>
   <view class="Vtu_Dialog_Center center-class" animation="{{centerAnimation}}">
     <view class="Vtu_Dialog_Center_Common">
-      <view class="Vtu_Dialog_Center_Common_Close" bindtap="closeDialog">
+      <!-- <view class="Vtu_Dialog_Center_Common_Close" bindtap="closeDialog">
         <view class="Vtu_Dialog_Center_Common_Close_Icon vtu-icon vtu-icon-x" hover-class="Btn_Hover"></view>
-      </view>
+      </view> -->
       <view class="Vtu_Dialog_Center_Common_Title" wx:if="{{title}}">{{title}}</view>
       <view class="Vtu_Dialog_Center_Common_Summary" wx:if="{{summary}}">{{summary}}</view>
     </view>
@@ -23,7 +23,7 @@
         <vtu-btn type="{{item.type || 'default'}}"
                  size="{{item.size || buttonSize}}"
                  icon="{{item.icon}}"
-                 loading="{{item.loading||false}}"
+                 loading="{{item.loading||false}}" 
                  v-class="Footer_Button"
                  openType="{{item.openType}}"
                  session-from="{{item.sessionFrom}}"
