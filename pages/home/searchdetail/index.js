@@ -14,28 +14,50 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
     let val = options.search
-    this.OnGetSearch(val)
+    this.setData({
+      val: val
+    })
+    this.OnGetSearch()
   },
 
-  async OnGetSearch(val) {
+  async OnGetSearch() {
     let results = await httpWX.get({
       url: '/article/search',
       data: {
-        keyword: val
+        keyword: this.data.val
       }
     })
     if (results.statusCode == 200) {
+      let list = results.data
+      for (let data of list) {
+        let count = await this.onGetCount(data.id)
+        let files = []
+        if (data.files.length > 0) {
+          files = data.files.slice(0, 3)
+        }
+        data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
+          .replace(/<section/g, '<div')
+          .replace(/\/section>/g, '\div>');
+        Object.assign(data, {
+          count: count,
+          files: files
+        })
+      }
       this.setData({
-        content: results.data,
-        val: val
+        content: results.data
       })
     }
   },
-
+  async onGetCount(hostId) {
+    let result = await httpWX.get({
+      url: `/comment/count/${hostId}`,
+    })
+    if (result.statusCode == 200) {
+      return result.data
+    }
+  },
   backSearch() {
-    console.log(11111111)
     wx.navigateTo({
       url: "/pages/home/searchLoad/index",
     })

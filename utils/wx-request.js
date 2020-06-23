@@ -25,7 +25,6 @@ function request(res) {
         reject(false)
       },
       complete: function(res) {
-        console.log(res, '?')
         // wx.hideLoading()
       }
     })

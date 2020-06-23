@@ -9,10 +9,16 @@ Page({
     style: 7,
     tabValue: 'name2',
     contBarHeight: 0,
+    newsNum: 1,
+    fzNum: 1,
     newsList: [],
     FZList: [],
     windowHeight: 0,
-    scrollViewHeight: 0
+    scrollViewHeight: 0,
+    loading: {
+      msg: '111111111111',
+      show: false
+    }
   },
 
   radioChange(e) {
@@ -35,11 +41,11 @@ Page({
 
   change: function(e) {
     if (!this.data.changeFlag) {
-      this.OnGetList(1, e.detail.current)
       this.setData({
         current: e.detail.current,
         changeFlag: true
       })
+      this.OnGetList()
       setTimeout(() => {
         this.setData({
           changeFlag: false
@@ -56,7 +62,7 @@ Page({
 
   onLoad() {
     this.contentHeight()
-    this.OnGetList(1, this.data.current)
+    this.OnGetList()
   },
 
   onShow() {
@@ -79,15 +85,15 @@ Page({
         });
       }
     });
+    // query.select('#header').boundingClientRect();
     let query = wx.createSelectorQuery().in(this);
     query.select('#navbar').boundingClientRect();
-    query.select('#header').boundingClientRect();
     query.select('#noticeBar').boundingClientRect();
     query.exec((res) => {
       // 分别取出navbar和header的高度
-      let [navbarHeight, headerHeight, noticeHeight] = res
+      let [navbarHeight, noticeHeight] = res
       // 然后就是做个减法
-      let scrollViewHeight = this.data.windowHeight - navbarHeight.height - headerHeight.height - noticeHeight.height;
+      let scrollViewHeight = this.data.windowHeight - navbarHeight.height - noticeHeight.height;
       // 算出来之后存到data对象里面
       this.setData({
         scrollViewHeight: scrollViewHeight
@@ -103,16 +109,35 @@ Page({
     }
   },
 
-  async OnGetList(page, type) {
+  async OnGetList(action = true) {
+    let type = this.data.current
+    let page = 1
+    let oldList = []
+    if (type == 0) {
+      page = this.data.newsNum
+      oldList = this.data.newsList
+    } else if (type == 1) {
+      page = this.data.fzNum
+      oldList = this.data.FZList
+    }
+    //切换不触发请求，下拉刷新
+    if (this.data.current == 0 && this.data.newsList.length > 0 && action || this.data.current == 1 && this.data.FZList.length > 0 && action) {
+      return
+    }
     let res = await httpWX.get({
-      url: `/article?page=${page}&type=${type}`,
+      url: '/article',
+      data: {
+        page: page,
+        type: type
+      }
     })
+
     let list = res.data[0]
     for (let data of list) {
       let count = await this.onGetCount(data.id)
       let files = []
       if (data.files.length > 0) {
-        files = data.files.slice(0,3)
+        files = data.files.slice(0, 3)
       }
       data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
         .replace(/<section/g, '<div')
@@ -122,13 +147,21 @@ Page({
         files: files
       })
     }
+    if (page == 1) {
+      oldList = []
+    }
+    if (list.length > 0) {
+      page += 1
+    }
     if (this.data.current == 0) {
       this.setData({
-        newsList: list
+        newsList: oldList.concat(list),
+        newsNum: page
       })
     } else if (this.data.current == 1) {
       this.setData({
-        FZList: list
+        FZList: oldList.concat(list),
+        fzNum: page
       })
     }
   },
@@ -162,7 +195,7 @@ Page({
 
   },
 
-  bindscrolltolower() {
-
+  bindscrolltolower(e) {
+    this.OnGetList(false)
   }
 });

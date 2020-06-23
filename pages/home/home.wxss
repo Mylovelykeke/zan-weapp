@@ -1,5 +1,11 @@
 /* pages/home/home.wxss */
 
+#navbar {
+  padding-bottom:4px; 
+  background: white;
+  margin-bottom: 1px;
+}
+
 .Tab_Span {
   background: white;
   border-bottom: 1px solid #fff;
@@ -45,13 +51,14 @@
 }
 
 .searchPanel_icon {
-  width: 40px;
+  width: 60px;
   height: 100%;
   float: left;
   text-align: center;
-  color: var(--h2Color);
 }
-
+.icon-sousuo1{
+  font-size: 20px;
+}
 .searchPanel_input {
   width: calc(100% - 40px);
   float: left;
@@ -107,7 +114,7 @@
   bottom: 50px;
   width: 45px;
   height: 45px;
-  background: #f0d264;
+  background: #F2994A;
   border-radius: 15px;
   transform: rotate(45deg);
   box-shadow: 0 0 4px #f1f1f1;
@@ -118,9 +125,22 @@
 
 .fabu {
   transform: rotate(45deg);
-  -webkit-transform:rotate(45deg)
+  -webkit-transform: rotate(45deg);
 }
-i{
+
+i {
   font-size: 20px;
   color: white;
+}
+
+.tabClass {
+  background: transparent !important;
+  height: 100%;
+  margin-left: 10px;
+}
+
+.tabActiveClass {
+  color: #F2994A !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
 }

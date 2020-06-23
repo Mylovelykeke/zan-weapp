@@ -7,7 +7,7 @@
   box-sizing: border-box;
   width: 100%;
   min-height: 90px;
-  background: #f0d264;
+  background:  linear-gradient(to right, rgb(242, 153, 74), rgb(242, 201, 76));
 }
 
 .header .item_right {

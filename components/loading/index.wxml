@@ -1,0 +1,30 @@
+<!--components/loading/index.wxml-->
+<template name='toast'>
+  <cover-view class="Toast" hidden="{{show}}">
+    <cover-view class='ToastBg'></cover-view>
+    <cover-view class='mask' wx:if='{{flag==1}}'>
+      <cover-view class='icon'>
+        <cover-image src='../../img/success.png' class='image'></cover-image>
+      </cover-view>
+      <cover-view class='msg'>{{msg}}</cover-view>
+    </cover-view>
+
+    <cover-view class='mask' wx:elif='{{flag==2}}'>
+      <cover-view class='icon'>
+        <cover-image src='../../img/fail.png' class='image'></cover-image>
+      </cover-view>
+      <cover-view class='msg'>{{msg}}</cover-view>
+    </cover-view>
+  </cover-view>
+</template>
+<template name='loading'>
+  <view class="Toast" hidden="{{show}}">
+    <view class='ToastBg'></view>
+    <view class='mask'>
+      <view class="sk-double-bounce">
+        <view class="sk-child sk-double-bounce1"></view>
+        <view class="sk-child sk-double-bounce2"></view>
+      </view>
+    </view>
+  </view>
+</template>

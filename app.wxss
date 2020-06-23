@@ -8,6 +8,7 @@
 @import '/miniprogram_npm/vtuweapp/css/Vtu_Style.wxss';
 @import '/assets/fonts/iconfont.wxss';
 @import 'styles/iconfont.wxss';
+@import 'components/loading/index.wxss';
 .container {
   height: 100%;
   display: flex;

@@ -18,7 +18,8 @@
     "pages/mine/arbitration_item/index",
     "pages/msg/systeminfo/index",
     "pages/msg/likeinfo/index",
-    "pages/home/common_item_detail/index"
+    "pages/home/common_item_detail/index",
+    "components/loading/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,7 +29,7 @@
   },
   "tabBar": {
     "color": "#000",
-    "backgroundColor": "#fafafa",
+    "backgroundColor": "white",
     "selectedColor": "#000",
     "borderStyle": "white",
     "list": [

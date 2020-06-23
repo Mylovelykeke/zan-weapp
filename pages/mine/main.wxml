@@ -12,10 +12,10 @@
           <view>{{userInfo.country+userInfo&&userInfo.city}}</view>
         </view>
       </view>
-      <view class="item_right">
+      <!-- <view class="item_right">
         <view>信用分</view>
         <span>30</span>
-      </view>
+      </view> -->
     </view>
     <view class="align" wx:else>
       <view class="auth" bindtap='onGotUserInfo'>获取微信授权</view>
