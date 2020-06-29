@@ -10,27 +10,16 @@ Page({
   data: {
     userInfo: null,
     flag: false,
-    postCount:0
+    postCount: 0,
+    likeCount: 0,
+    historyCount:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    console.log(app)
-    if (app.globalData.userInfo) {
-      this.myPostList()
-      this.setData({
-        userInfo: app.globalData.userInfo
-      })
-    } else {
-      app.userInfoReadyCallback = res => {
-        this.myPostList()
-        this.setData({
-          userInfo: res.userInfo
-        })
-      }
-    }
+  onLoad: function (options) {
+
   },
   toPostings() {
     wx.navigateTo({
@@ -40,7 +29,13 @@ Page({
 
   tofavorite() {
     wx.navigateTo({
-      url: "/pages/mine/favorite/main",
+      url: "/pages/mine/favorite/index",
+    })
+  },
+
+  toHistory(){
+    wx.navigateTo({
+      url: "/pages/mine/history/index",
     })
   },
 
@@ -56,11 +51,12 @@ Page({
     })
   },
   // 获取userinfo
-  getUserInfo(e){
+  getUserInfo(e) {
     this.setData({
       userInfo: e.detail,
-      flag:false
+      flag: false
     })
+    this.step()
   },
 
   closeMask() {
@@ -69,13 +65,55 @@ Page({
     })
   },
 
+  step() {
+    if (!app.globalData.openid) {
+      app.openIdReadyCallback = res => {
+        this.myPostList()
+        this.getLike()
+        this.getHistory()
+      }
+    } else {
+      this.myPostList()
+      this.getLike()
+      this.getHistory()
+    }
+  },
+
+  async getHistory(){
+    let results = await httpWX.get({
+      url: `/history/count`,
+      data: {
+        openid: app.globalData.openid
+      }
+    })
+    if (results.success) {
+      this.setData({
+        historyCount: results.data
+      })
+    }
+  },
+
+  async getLike() {
+    let results = await httpWX.get({
+      url: `/like/count`,
+      data: {
+        openid: app.globalData.openid
+      }
+    })
+    if (results.success) {
+      this.setData({
+        likeCount: results.data
+      })
+    }
+  },
+
   async myPostList() {
     let openid = app.globalData.openid
     let results = await httpWX.get({
       url: `/article/userid/${openid}`,
     })
-    if (results.statusCode == 200) {
-      let data1 = results.data.length
+    if (results.success) {
+      let data1 = results.data
       this.setData({
         postCount: data1
       })
@@ -84,49 +122,57 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo
+      })
+      this.step()
+    } else {
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo
+        })
+        if (res.userInfo) {
+          this.step()
+        }
+      }
+    }
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
+  onReachBottom: function () {
 
   }
 })

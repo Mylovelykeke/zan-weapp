@@ -2,6 +2,7 @@
   "navigationBarTitleText": "发帖",
   "navigationStyle": "custom",
   "component": true,
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "vtu-tab": "/miniprogram_npm/vtuweapp/tab/vtu-tab",
     "vtu-tabs": "/miniprogram_npm/vtuweapp/tabs/vtu-tabs",

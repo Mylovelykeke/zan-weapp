@@ -12,7 +12,9 @@ Page({
     show: false,
     flag: null,
     targetid:null,
-    edit:null
+    edit:null,
+    num:1,
+    like:null
   },
 
   /**
@@ -21,16 +23,45 @@ Page({
   onLoad: function(options) {
     this.myPostList()
   },
+  async onGetCount(hostId) {
+    let result = await httpWX.get({
+      url: `/comment/count/${hostId}`,
+    })
+    if (result.statusCode == 200) {
+      return result.data
+    }
+  },
 
   async myPostList() {
+    let page = this.data.num
+    let oldList = this.data.content
+    this.setData({
+      loading: {
+        show: false
+      }
+    })
     let openid = app.globalData.openid || 'ongb-4yJcjO0dakkME1Q9q8LenZo'
     let results = await httpWX.get({
-      url: `/article?openid=${openid}`,
+      url: `/article`,
+      data:{
+        page: page,
+        openid: openid,
+      }
     })
-    if (results.statusCode == 200) {
+    if (results.success) {
       let data1 = results.data[0]
+      if (page == 1) {
+        oldList = []
+      }
+      if (data1.length > 0) {
+        page += 1
+      }
       this.setData({
-        content: data1
+        content: oldList.concat(data1),
+        num: page,
+        loading: {
+          show: true
+        }
       })
     }
   },
@@ -56,9 +87,11 @@ Page({
   },
   setting(e) {
     let targetid = e.currentTarget.dataset.id
+    let like = e.currentTarget.dataset.like
     this.setData({
       flag: false,
       show: true,
+      like:like,
       targetid: targetid
     })
   },
@@ -67,6 +100,34 @@ Page({
     wx.navigateTo({
       url: `/pages/home/write/index?edit=true&articleid=${this.data.targetid}`,
     })
+  },
+  async cancel(){
+    let result = await httpWX.post({
+      url: `/like/delete`,
+      data: {
+       id:this.data.like.id
+      }
+    })
+    if(result.success){
+      this.setData({
+        like:null
+      })
+    }
+  },
+
+  async likeArticle(){
+    let result = await httpWX.post({
+      url: `/like/`,
+      data:{
+        articleId: this.data.targetid,
+        userId: app.globalData.openid || 'ongb-4yJcjO0dakkME1Q9q8LenZo'
+      }
+    })
+    if (result.success) {
+      this.setData({
+        like: result.data
+      })
+    }
   },
 
   deleteArticle(){
@@ -108,30 +169,9 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
 
   },
 
@@ -146,7 +186,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.myPostList()
   },
 
   /**

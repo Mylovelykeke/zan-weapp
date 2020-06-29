@@ -14,4 +14,5 @@
 .Vtu_SwiperPanel_Swiper_Item_Scroll{
     height: 100%;
     width: 100%;
+    -webkit-overflow-scrolling:touch;
 }

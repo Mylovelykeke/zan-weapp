@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "最近浏览",
+  "usingComponents": {
+    "stz-card": "/components/stzCard/index"
+  }
+}

@@ -16,7 +16,8 @@
         </block>
       </view>
       <view class="icon vtu-icon {{showBQ?'vtu-icon-jianpan':'vtu-icon-emoji'}}" capture-bind:touchstart="clickBQ" capture-bind:touchend=""></view>
-      <view class="icon vtu-icon  {{!showMENU?'vtu-icon-jiahao1':'vtu-icon-plus-arrow-up-copy'}}" capture-bind:touchstart="clickMENU" capture-bind:touchend=""></view>
+      <view class="icon vtu-icon iconfont icon-shoucang" style="font-size:24px;" capture-bind:touchstart="" capture-bind:touchend=""></view>
+      <!-- <view class="icon vtu-icon  {{!showMENU?'vtu-icon-jiahao1':'vtu-icon-plus-arrow-up-copy'}}" capture-bind:touchstart="clickMENU" capture-bind:touchend=""></view> -->
     </view>
     <view class="chatToolPanel_menu" hidden="{{!showBMP}}">
       <view class="emoij" hidden="{{!showBQ}}">

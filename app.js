@@ -116,28 +116,8 @@ App({
     ],
   },
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
 
-    // 登录
-
-    wx.login({
-      success:(res)=> {
-        if (res.code) {
-          // 这里可以把code传给后台，后台用此获取openid及session_key
-          httpWX.get({
-            url: '/user/logintoken?code=' + res.code
-          }).then(res => {
-              this.globalData.openid = res.data.openid
-              if(this.openIdReadyCallback){
-                this.openIdReadyCallback(res)
-              }
-          })
-        }
-      }
-    })
+    this.login()
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -152,6 +132,24 @@ App({
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
+            }
+          })
+        }
+      }
+    })
+  },
+  login(){
+    // 登录
+    wx.login({
+      success: (res) => {
+        if (res.code) {
+          // 这里可以把code传给后台，后台用此获取openid及session_key
+          httpWX.get({
+            url: '/user/logintoken?code=' + res.code
+          }).then(res => {
+            this.globalData.openid = res.data.openid
+            if (this.openIdReadyCallback) {
+              this.openIdReadyCallback(res)
             }
           })
         }

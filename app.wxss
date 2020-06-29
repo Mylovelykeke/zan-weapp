@@ -9,6 +9,7 @@
 @import '/assets/fonts/iconfont.wxss';
 @import 'styles/iconfont.wxss';
 @import 'components/loading/index.wxss';
+
 .container {
   height: 100%;
   display: flex;
@@ -17,7 +18,10 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
-page{
-  background: #f1f1f1;
 }
+
+page {
+  background: #f7f7f7;
+}
+
+

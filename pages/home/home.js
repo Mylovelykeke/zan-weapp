@@ -16,8 +16,7 @@ Page({
     windowHeight: 0,
     scrollViewHeight: 0,
     loading: {
-      msg: '111111111111',
-      show: false
+      show: true
     }
   },
 
@@ -66,7 +65,7 @@ Page({
   },
 
   onShow() {
-
+    this.OnGetList()
   },
   getUserInfo() {
     this.setData({
@@ -109,21 +108,28 @@ Page({
     }
   },
 
-  async OnGetList(action = true) {
+  async OnGetList(action = true, up = false) {
     let type = this.data.current
     let page = 1
     let oldList = []
-    if (type == 0) {
-      page = this.data.newsNum
-      oldList = this.data.newsList
-    } else if (type == 1) {
-      page = this.data.fzNum
-      oldList = this.data.FZList
+    if (!up) {
+      if (type == 0) {
+        page = this.data.newsNum
+        oldList = this.data.newsList
+      } else if (type == 1) {
+        page = this.data.fzNum
+        oldList = this.data.FZList
+      }
     }
     //切换不触发请求，下拉刷新
-    if (this.data.current == 0 && this.data.newsList.length > 0 && action || this.data.current == 1 && this.data.FZList.length > 0 && action) {
+    if ((this.data.current == 0 && this.data.newsList.length > 0 && action) || (this.data.current == 1 && this.data.FZList.length > 0 && action)) {
       return
     }
+    this.setData({
+      loading: {
+        show: false
+      }
+    })
     let res = await httpWX.get({
       url: '/article',
       data: {
@@ -134,18 +140,9 @@ Page({
 
     let list = res.data[0]
     for (let data of list) {
-      let count = await this.onGetCount(data.id)
-      let files = []
-      if (data.files.length > 0) {
-        files = data.files.slice(0, 3)
-      }
       data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
         .replace(/<section/g, '<div')
         .replace(/\/section>/g, '\div>');
-      Object.assign(data, {
-        count: count,
-        files: files
-      })
     }
     if (page == 1) {
       oldList = []
@@ -156,12 +153,18 @@ Page({
     if (this.data.current == 0) {
       this.setData({
         newsList: oldList.concat(list),
-        newsNum: page
+        newsNum: page,
+        loading: {
+          show: true
+        }
       })
     } else if (this.data.current == 1) {
       this.setData({
         FZList: oldList.concat(list),
-        fzNum: page
+        fzNum: page,
+        loading: {
+          show: true
+        }
       })
     }
   },
@@ -196,6 +199,7 @@ Page({
   },
 
   bindscrolltolower(e) {
+    console.log(1)
     this.OnGetList(false)
   }
 });

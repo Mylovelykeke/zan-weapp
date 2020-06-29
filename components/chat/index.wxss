@@ -1,5 +1,6 @@
 /* pages/msg/chat/index.wxss */
 @import '/miniprogram_npm/vtuweapp/template/news/template.wxss';
+@import '/assets/fonts/iconfont.wxss';
 .chatListPanel {
   width: 100%;
   float: left;

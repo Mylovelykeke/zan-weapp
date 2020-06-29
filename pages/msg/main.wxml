@@ -41,3 +41,5 @@
     </view>
   </view>
 </view>
+<import src='../../components/loading/index.wxml'/>
+<template is='loading' data='{{...loading}}'></template>

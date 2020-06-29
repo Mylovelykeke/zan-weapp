@@ -31,11 +31,11 @@
         我的帖子
       </view>
       <view bindtap="tofavorite">
-        <i>0</i>
+        <i>{{likeCount}}</i>
         收藏夹
       </view>
-      <view>
-        <i>0</i>
+      <view bindtap="toHistory">
+        <i>{{historyCount}}</i>
         最近浏览
       </view>
     </view>

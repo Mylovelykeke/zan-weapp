@@ -24,7 +24,6 @@ Component({
    */
   methods: {
     onGotUserInfo(e) {
-      console.log(e.detail,'e')
       try{
         if (e) {
           let userInfo = e.detail.userInfo

@@ -15,6 +15,18 @@ Component({
     footer:{
       type: Boolean,
       value: true
+    },
+    format:{
+      type: String,
+      value: 'middle'
+    },
+    setting:{
+      type: Boolean,
+      value: false
+    },
+    titleStyle: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -54,5 +66,8 @@ Component({
         },
       })
     },
+    setAction(e){
+      this.triggerEvent('detail', { id: e.currentTarget.dataset['id'] });
+    }
   }
 })

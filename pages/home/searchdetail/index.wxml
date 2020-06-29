@@ -5,3 +5,6 @@
 <view class="content">
   <stz-card newsList='{{content}}' bind:detail="ItemDetail"></stz-card>
 </view>
+
+<import src='../../../components/loading/index.wxml'/>
+<template is='loading' data='{{...loading}}'></template>

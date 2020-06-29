@@ -2,8 +2,8 @@
 <vtu-dialog id="Vtu-Dialog"></vtu-dialog>
 <vtu-prop show="{{show}}" show-cancel cancel-label="取消">
   <view class="prop-content">
-    <view class='cell'>
-      <icon class="iconfont icon-shoucang"></icon>
+    <view class='cell' bindtap="{{like?'cancel':'likeArticle'}}">
+      <icon class="{{like?'iconfont icon-shoucang1 like':'iconfont icon-shoucang'}}"></icon>
       <view>收藏</view>
     </view>
     <view class='cell'>
@@ -23,11 +23,12 @@
 
         <view  data-val='{{item}}' bindtouchstart="confirm" bindtap="getDetail"  data-idx="{{index}}">
           <view class="card-title">
-            {{item.title}}
+          <!-- <text class="card-id">{{item.type==0?"#求租房子#":item.type==1?"#出售房子#":"#其他#"}} </text> -->
+           {{item.title}}
           </view>
           <view class="vtu-news-many-img" wx:if='{{item.files.length>0}}'>
-            <view class="vtu-news-many-img-li" wx:for="{{item.files}}" wx:key="index" wx:for-item="img" wx:for-index="idx">
-              <image src="{{img.url}}" mode="aspectFill"></image>
+            <view class="vtu-news-many-img-li" wx:for="{{item.files}}" wx:key="index" wx:for-item="img" wx:for-index="idx" wx:if='{{idx<3}}'>
+              <image  src="{{img.url}}" mode="aspectFill"></image>
             </view>
           </view>
           <view class="card-main">
@@ -42,10 +43,12 @@
             {{item.publishAt}}
           </view>
           <view class="setting">
-            <icon class="iconfont icon-qita"  data-id="{{item.id}}" catchtap="setting"></icon>
+            <icon class="iconfont icon-qita"  data-id="{{item.id}}"  data-like="{{item.like}}" catchtap="setting"></icon>
           </view>
         </view>
       </view>
     </view>
   </view>
 </view>
+<import src='../../../components/loading/index.wxml'/>
+<template is='loading' data='{{...loading}}'></template>

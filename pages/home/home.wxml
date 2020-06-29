@@ -49,16 +49,16 @@
 <view>
   <vtu-swiperPanel height="{{scrollViewHeight}}px" current="{{current}}" bind:change="change">
     <vtu-swiperPanel-item name="name1" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower"></vtu-swiperPanel-item>
-    <vtu-swiperPanel-item name="name2"></vtu-swiperPanel-item>
+    <vtu-swiperPanel-item name="name2" bindscrolltolower="bindscrolltolower"></vtu-swiperPanel-item>
     <view class="swiper" slot="name1">
       <view class="swiper_li">
         <!-----新闻列表------>
         <view class="center">
-          <stz-card newsList='{{newsList}}' bind:detail="ItemDetail"></stz-card>
+          <stz-card newsList='{{newsList}}' data-type='0' bind:detail="ItemDetail"></stz-card>
         </view>{{index}}</view>
     </view>
     <view class="swiper" slot="name2">
-      <stz-card newsList='{{FZList}}' cardFlag="{{false}}" data-type='1' bind:detail="ItemDetail"></stz-card>
+      <stz-card newsList='{{FZList}}'  data-type='1' bind:detail="ItemDetail"></stz-card>
     </view>
   </vtu-swiperPanel>
 </view>

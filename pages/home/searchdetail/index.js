@@ -7,7 +7,10 @@ Page({
    */
   data: {
     val: '',
-    content: []
+    content: [],
+    loading: {
+      show: true
+    }
   },
 
   /**
@@ -22,6 +25,11 @@ Page({
   },
 
   async OnGetSearch() {
+    this.setData({
+      loading: {
+        show: false
+      }
+    })
     let results = await httpWX.get({
       url: '/article/search',
       data: {
@@ -31,7 +39,6 @@ Page({
     if (results.statusCode == 200) {
       let list = results.data
       for (let data of list) {
-        let count = await this.onGetCount(data.id)
         let files = []
         if (data.files.length > 0) {
           files = data.files.slice(0, 3)
@@ -40,12 +47,14 @@ Page({
           .replace(/<section/g, '<div')
           .replace(/\/section>/g, '\div>');
         Object.assign(data, {
-          count: count,
           files: files
         })
       }
       this.setData({
-        content: results.data
+        content: results.data,
+        loading: {
+          show: true
+        }
       })
     }
   },

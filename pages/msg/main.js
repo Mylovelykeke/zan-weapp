@@ -9,6 +9,9 @@ Page({
   data: {
     userId: '',
     comment: [],
+    loading: {
+      show: false
+    },
     actions: [
       {
         id: 0,
@@ -61,12 +64,20 @@ Page({
   },
 
   async getMsgList(userId){
+    this.setData({
+      loading: {
+        show: false
+      }
+    })
     let result = await httpWX.get({
       url: `/comment/user/${userId}`,
     })
     if(result.statusCode == 200){
       this.setData({
-        comment:result.data
+        comment:result.data,
+        loading: {
+          show: true
+        }
       })
     }
   },
@@ -122,12 +133,6 @@ Page({
    */
   onReachBottom: function () {
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
+  
 })

@@ -1,0 +1,6 @@
+<!--pages/mine/history/index.wxml-->
+<view>
+  <stz-card newsList='{{newsList}}' format="{{false}}" titleStyle="{{false}}" setting="{{false}}" bind:detail="ItemDetail" bind:setAction='setAction'></stz-card>
+</view>
+<import src='../../../components/loading/index.wxml'/>
+<template is='loading' data='{{...loading}}'></template>

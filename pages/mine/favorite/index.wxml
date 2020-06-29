@@ -1,2 +1,23 @@
 <!--pages/mine/favorite/index.wxml-->
-<text>pages/mine/favorite/index.wxml</text>
+<view>
+  <stz-card newsList='{{newsList}}' format="{{'right'}}" setting="{{false}}" bind:detail="ItemDetail" bind:setAction='setAction'></stz-card>
+</view>
+<!-- <vtu-dialog id="Vtu-Dialog"></vtu-dialog>
+<vtu-prop show="{{show}}" show-cancel cancel-label="取消">
+  <view class="prop-content">
+    <view class='cell' bindtap="likeArticle">
+      <icon class="iconfont icon-shoucang"></icon>
+      <view>收藏</view>
+    </view>
+    <view class='cell'>
+      <icon class="iconfont icon-bianji"></icon>
+      <button class="btn" open-type="share">转发</button>
+    </view>
+    <view class='cell' bindtap="deleteArticle">
+      <icon class="iconfont icon-shanchu red"></icon>
+      <view class="red">删除</view>
+    </view>
+  </view>
+</vtu-prop> -->
+<import src='../../../components/loading/index.wxml'/>
+<template is='loading' data='{{...loading}}'></template>
