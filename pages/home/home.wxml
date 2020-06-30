@@ -12,22 +12,15 @@
         <input placeholder="请输入关键字" disabled/>
       </view>
     </view> -->
-      <view class="searchPanel_icon iconfont icon-sousuo1" bindtap="search"></view>
-      <view class="searchPanel">
-        <vtu-tabs current="{{current}}"
-                v-class="tabClass" color="#606266"
-                tab-active-class="tabActiveClass"
-                is-average="{{false}}"
-                line="{{false}}"
-                border="{{true}}"
-                fill="{{true}}"
-                itemAlign="{{'center'}}"
-                bind:change="change"
-                >
-        <vtu-tab label="求租广场" name="name1"></vtu-tab>
+    <view class="searchPanel_icon iconfont icon-sousuo1" bindtap="search"></view>
+    <view class="searchPanel">
+      <vtu-tabs current="{{current}}" v-class="tabClass" color="#606266" tab-active-class="tabActiveClass" is-average="{{false}}" line="{{false}}" border="{{true}}" fill="{{true}}" itemAlign="{{'left'}}" bind:change="change" swipeThreshold="{{2}}">
+        <vtu-tab label="广场" name="name1"></vtu-tab>
         <vtu-tab label="房源" name="name2"></vtu-tab>
+        <vtu-tab label="曝光台" name="name3"></vtu-tab>
+        <vtu-tab label="秘密" name="name4"></vtu-tab>
       </vtu-tabs>
-      </view>
+    </view>
   </vtu-navbar>
 </view>
 <view id="noticeBar">
@@ -50,6 +43,8 @@
   <vtu-swiperPanel height="{{scrollViewHeight}}px" current="{{current}}" bind:change="change">
     <vtu-swiperPanel-item name="name1" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower"></vtu-swiperPanel-item>
     <vtu-swiperPanel-item name="name2" bindscrolltolower="bindscrolltolower"></vtu-swiperPanel-item>
+    <vtu-swiperPanel-item name="name3" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower"></vtu-swiperPanel-item>
+    <vtu-swiperPanel-item name="name4" bindscrolltolower="bindscrolltolower"></vtu-swiperPanel-item>
     <view class="swiper" slot="name1">
       <view class="swiper_li">
         <!-----新闻列表------>
@@ -58,11 +53,18 @@
         </view>{{index}}</view>
     </view>
     <view class="swiper" slot="name2">
-      <stz-card newsList='{{FZList}}'  data-type='1' bind:detail="ItemDetail"></stz-card>
+      <stz-card newsList='{{FZList}}' data-type='1' bind:detail="ItemDetail"></stz-card>
+    </view>
+    <view class="swiper" slot="name3">
+      <!-- <vtu-swiper  height="{{(windowWidth-80)/2}}px" autoplay='{{true}}' list="{{imageList}}" swiper-class="swiperClass"  current="{{cur}}" bind:change="bindChange"></vtu-swiper> -->
+
+    </view>
+    <view class="swiper" slot="name4">
+
     </view>
   </vtu-swiperPanel>
 </view>
 <login-component wx:if="{{flag}}" bind:closeMask="closeMask" bind:getUserInfo='getUserInfo'></login-component>
 
-<import src='../../components/loading/index.wxml'/>
+<import src='../../components/loading/index.wxml' />
 <template is='loading' data='{{...loading}}'></template>

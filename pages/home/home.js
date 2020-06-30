@@ -5,9 +5,8 @@ Page({
   data: {
     flag: false,
     changeFlag: false,
-    current: 0,
+    current: 2,
     style: 7,
-    tabValue: 'name2',
     contBarHeight: 0,
     newsNum: 1,
     fzNum: 1,
@@ -17,9 +16,37 @@ Page({
     scrollViewHeight: 0,
     loading: {
       show: true
-    }
+    },
+    cur:0,
+    imageList: [
+      {
+        url: 'https://activity.vtuzx.com/doc/vtuUI/weapp/swiper/1.png',
+        mode: "widthFix"
+      },
+      {
+        url: 'https://activity.vtuzx.com/doc/vtuUI/weapp/swiper/2.png',
+        mode: "widthFix"
+      },
+      {
+        url: 'https://activity.vtuzx.com/doc/vtuUI/weapp/swiper/3.png',
+        mode: "widthFix"
+      },
+      {
+        url: 'https://activity.vtuzx.com/doc/vtuUI/weapp/swiper/4.png',
+        mode: "widthFix"
+      },
+      {
+        url: 'https://activity.vtuzx.com/doc/vtuUI/weapp/swiper/5.png',
+        mode: "widthFix"
+      }
+    ],
+    windowWidth: wx.getSystemInfoSync().windowWidth
   },
-
+  bindChange: function (e) {
+    this.setData({
+      cur: e.detail.current
+    })
+  },
   radioChange(e) {
     this.setData({
       style: e.detail.value
@@ -137,7 +164,7 @@ Page({
         type: type
       }
     })
-
+  console.log(res,'??')
     let list = res.data[0]
     for (let data of list) {
       data.content = data.content.replace(/<img/gi, '<img style="max-width:100%;height:auto;float:left;display:block" ')
@@ -162,6 +189,12 @@ Page({
       this.setData({
         FZList: oldList.concat(list),
         fzNum: page,
+        loading: {
+          show: true
+        }
+      })
+    }else{
+      this.setData({
         loading: {
           show: true
         }

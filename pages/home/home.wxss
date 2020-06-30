@@ -23,12 +23,6 @@
   background: -webkit-linear-gradient(left, #fc455d 0%, rgba(189, 37, 92, 0.8) 100%);
 }
 
-.tabActiveClass {
-  color: #fc455d !important;
-  font-size: 22px !important;
-  font-weight: bold !important;
-}
-
 .searchImg {
   width: 30px;
   height: 30px;
@@ -141,6 +135,6 @@ i {
 
 .tabActiveClass {
   color: #F2994A !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   font-weight: bold !important;
 }

@@ -1,4 +1,4 @@
-<!--pages/msg/main.wxml-->
+ <!--pages/msg/main.wxml-->
 <view>
   <view class="header">
     <view class="notice">

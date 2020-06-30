@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "发帖",
   "navigationStyle": "custom",
   "component": true,
   "enablePullDownRefresh": true,
@@ -8,6 +7,7 @@
     "vtu-tabs": "/miniprogram_npm/vtuweapp/tabs/vtu-tabs",
     "vtu-noticeBar": "/miniprogram_npm/vtuweapp/noticeBar/vtu-noticeBar",
     "vtu-navbar": "/miniprogram_npm/vtuweapp/navbar/vtu-navbar",
+    "vtu-swiper": "/miniprogram_npm/vtuweapp/swiper/vtu-swiper",
     "vtu-swiperPanel": "/miniprogram_npm/vtuweapp/swiperPanel/swiper/vtu-swiperPanel",
     "vtu-swiperPanel-item": "/miniprogram_npm/vtuweapp/swiperPanel/item/vtu-swiperPanel-item",
     "stz-card": "/components/stzCard/index",
