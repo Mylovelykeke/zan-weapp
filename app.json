@@ -2,6 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/mine/main",
+    "pages/mine/communities/reports/index",
+    "pages/mine/communities/index",
     "pages/mine/favorite/index",
     "pages/mine/post/index",
     "pages/msg/likeinfo/index",
@@ -11,7 +13,6 @@
     "pages/home/searchdetail/index",
     "pages/home/searchLoad/index",
     "pages/home/location/index",
-    "pages/mine/communities/index",
     "pages/report/index",
     "pages/home/write/index",
     "pages/index/index",
@@ -19,13 +20,12 @@
     "pages/mine/arbitration_item/index",
     "pages/msg/systeminfo/index",
     "pages/home/common_item_detail/index",
-    "components/loading/index",
     "pages/mine/history/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "找房主",
+    "navigationBarTitleText": "窝手",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

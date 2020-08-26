@@ -33,6 +33,11 @@ Page({
       results.data.forEach(d => {
         if (d.article) {
           newList.push(d.article)
+        }else{
+          newList.push({
+            title:'文章已删除',
+            views:-1
+          })
         }
       })
       this.setData({
@@ -46,10 +51,12 @@ Page({
 
   ItemDetail(e) {
     let id = e.detail.id
-    let type = e.currentTarget.dataset.type
-    wx.navigateTo({
-      url: `/pages/home/detail/detail?id=${id}&type=${type}`,
-    })
+    if(id){
+      let type = e.currentTarget.dataset.type
+      wx.navigateTo({
+        url: `/pages/home/detail/detail?id=${id}&type=${type}`,
+      })
+    }
   },
 
   /**

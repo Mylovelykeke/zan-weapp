@@ -43,3 +43,4 @@
 </view>
 <import src='../../components/loading/index.wxml'/>
 <template is='loading' data='{{...loading}}'></template>
+<login-component flag="{{flag}}" bind:closeMask="closeMask" bind:getUserInfo='getUserInfo'></login-component>

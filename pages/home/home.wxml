@@ -48,19 +48,32 @@
     <view class="swiper" slot="name1">
       <view class="swiper_li">
         <!-----新闻列表------>
-        <view class="center">
+        <view class="center" wx:if='{{newsList.length>0}}'>
           <stz-card newsList='{{newsList}}' data-type='0' bind:detail="ItemDetail"></stz-card>
-        </view>{{index}}</view>
+        </view>
+        <view class="noData" wx:else>
+          <image src="../../assets/images/empty.png" mode='aspectFit'></image>
+        </view>
+      </view>
     </view>
     <view class="swiper" slot="name2">
-      <stz-card newsList='{{FZList}}' data-type='1' bind:detail="ItemDetail"></stz-card>
+      <view wx:if='{{FZList.length>0}}'>
+        <stz-card newsList='{{FZList}}' data-type='1' bind:detail="ItemDetail" ></stz-card>
+      </view>
+      <view class="noData" wx:else>
+        <image src="../../assets/images/empty.png" mode='aspectFit'></image>
+      </view>
     </view>
     <view class="swiper" slot="name3">
       <!-- <vtu-swiper  height="{{(windowWidth-80)/2}}px" autoplay='{{true}}' list="{{imageList}}" swiper-class="swiperClass"  current="{{cur}}" bind:change="bindChange"></vtu-swiper> -->
-
+      <view class="noData">
+        <image src="../../assets/images/empty.png" mode='aspectFit'></image>
+      </view>
     </view>
     <view class="swiper" slot="name4">
-
+      <view class="noData">
+        <image src="../../assets/images/empty.png" mode='aspectFit'></image>
+      </view>
     </view>
   </vtu-swiperPanel>
 </view>

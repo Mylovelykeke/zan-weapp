@@ -5,7 +5,7 @@ Page({
   data: {
     flag: false,
     changeFlag: false,
-    current: 2,
+    current: 0,
     style: 7,
     contBarHeight: 0,
     newsNum: 1,
@@ -92,7 +92,18 @@ Page({
   },
 
   onShow() {
-    this.OnGetList()
+    if (app.globalData.userInfo) {
+      this.setData({
+        flag: false
+      })
+    } else {
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          flag: false
+        })
+      }
+    }
+    this.OnGetList(false,true)
   },
   getUserInfo() {
     this.setData({
@@ -232,7 +243,6 @@ Page({
   },
 
   bindscrolltolower(e) {
-    console.log(1)
     this.OnGetList(false)
   }
 });

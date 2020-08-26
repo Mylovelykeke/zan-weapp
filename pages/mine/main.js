@@ -12,13 +12,13 @@ Page({
     flag: false,
     postCount: 0,
     likeCount: 0,
-    historyCount:0
+    historyCount: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
   toPostings() {
@@ -26,14 +26,21 @@ Page({
       url: "/pages/mine/post/index",
     })
   },
-
+  test(e) {
+    wx.requestSubscribeMessage({
+      tmplIds: ['5OWTgGD3qY7oejR9etUnHcKyS1GP0Y1f1jL3g8UcgaM'],
+      success(res) {
+        console.log(res)
+      }
+    })
+  },
   tofavorite() {
     wx.navigateTo({
       url: "/pages/mine/favorite/index",
     })
   },
 
-  toHistory(){
+  toHistory() {
     wx.navigateTo({
       url: "/pages/mine/history/index",
     })
@@ -79,7 +86,7 @@ Page({
     }
   },
 
-  async getHistory(){
+  async getHistory() {
     let results = await httpWX.get({
       url: `/history/count`,
       data: {
@@ -122,22 +129,24 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     if (app.globalData.userInfo) {
       this.setData({
+        flag: false,
         userInfo: app.globalData.userInfo
       })
       this.step()
     } else {
       app.userInfoReadyCallback = res => {
         this.setData({
+          flag: false,
           userInfo: res.userInfo
         })
         if (res.userInfo) {
@@ -151,28 +160,28 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   }
 })

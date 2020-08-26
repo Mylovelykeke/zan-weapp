@@ -1,7 +1,7 @@
 /* pages/home/home.wxss */
 
 #navbar {
-  padding-bottom:4px; 
+  padding-bottom: 4px;
   background: white;
   margin-bottom: 1px;
 }
@@ -50,9 +50,11 @@
   float: left;
   text-align: center;
 }
-.icon-sousuo1{
+
+.icon-sousuo1 {
   font-size: 20px;
 }
+
 .searchPanel_input {
   width: calc(100% - 40px);
   float: left;
@@ -108,7 +110,7 @@
   bottom: 50px;
   width: 45px;
   height: 45px;
-  background: #F2994A;
+  background: #f2994a;
   border-radius: 15px;
   transform: rotate(45deg);
   box-shadow: 0 0 4px #f1f1f1;
@@ -134,7 +136,17 @@ i {
 }
 
 .tabActiveClass {
-  color: #F2994A !important;
+  color: #f2994a !important;
   font-size: 20px !important;
   font-weight: bold !important;
+}
+
+.noData {
+  display: flex;
+  align-items:center;
+  min-height: 400px;
+  justify-content: center;
+}
+.noData image{
+  width: 200px;
 }

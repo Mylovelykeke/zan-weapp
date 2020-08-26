@@ -136,11 +136,13 @@ Page({
       })
     })
     Promise.all(arr).then(res => {
+      console.log(res)
       // 上传成功，获取这些图片在服务器上的地址，组成一个数组
       return res.map(item => JSON.parse(item.data).data.id)
     }).catch(err => {
       console.log(">>>> upload images error:", err)
     }).then(ids => {
+      console.log(ids,'?')
       let filesid = ids.join(',')
       let location = JSON.stringify(this.data.locationinfo)
       httpWX.post({

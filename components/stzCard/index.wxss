@@ -114,6 +114,12 @@ rich-text {
   font-weight: bold;
 }
 
+.delect{
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #acaaaa;
+}
+
 .vtu-news-single-info-detail, .vtu-news-many-detail, .vtu-news-user-info-detail {
   width: 100%;
   height: 20px;

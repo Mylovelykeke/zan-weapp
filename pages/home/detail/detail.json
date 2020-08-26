@@ -4,6 +4,7 @@
     "vtu-navbar": "/miniprogram_npm/vtuweapp/navbar/vtu-navbar",
     "stz-skeleton": "/components/skeleton/index",
     "common":"/components/common/index",
-    "chat-model":"/components/chat/index"
+    "chat-model":"/components/chat/index",
+    "login-component": "/components/logincomponent/index"
   }
 }

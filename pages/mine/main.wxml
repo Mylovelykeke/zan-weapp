@@ -43,8 +43,8 @@
   <!-- 详细列表 -->
   <view class="content">
     <vtu-cell title="社区建设" wx:if="{{!locationinfo}}" bindtap='building' value="举报及处罚示例" border icon-color="#f5bf49" arrow></vtu-cell>
-    <vtu-cell title="联系客服" wx:if="{{!locationinfo}}" open-type="contact"  border icon-color="#f5bf49" arrow></vtu-cell>
+    <vtu-cell title="联系客服" wx:if="{{!locationinfo}}" open-type="contact"  border icon-color="#f5bf49" arrow ></vtu-cell>
     <vtu-cell title="意见反馈" wx:if="{{!locationinfo}}" open-type="feedback" border icon-color="#f5bf49" arrow></vtu-cell>
-    <vtu-cell title="商务合作" wx:if="{{!locationinfo}}" border icon-color="#f5bf49" arrow></vtu-cell>
+    <vtu-cell title="商务合作" wx:if="{{!locationinfo}}"  border icon-color="#f5bf49" arrow bindtap='test'></vtu-cell>
   </view>
 </view>

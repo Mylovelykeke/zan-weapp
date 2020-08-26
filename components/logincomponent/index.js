@@ -7,7 +7,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    flag:{
+      type:Boolean,
+      value:true
+    }
   },
   created(){
   },
@@ -38,6 +41,9 @@ Component({
             app.globalData.userInfo = res.data
             wx.setStorageSync('token', res.data.token)
             this.triggerEvent("getUserInfo", res.data)
+            this.setData({
+              flag:false
+            })
           })
         }
       }catch(e){

@@ -74,7 +74,7 @@
 </view>
 <view wx:else>
   <view class="vtu-news" wx:for='{{newsList}}' wx:key="index" wx:for-item="val" data-id="{{val.id}}" bindtap="viewdetail">
-    <view class="vtu-news-single fontsize">
+    <view class="vtu-news-single fontsize" wx:if='{{val.views>=0}}'>
       <view class="vtu-news-single-info" style="width:{{val.files.length>0?'':'100%'}}">
         <view class="vtu-news-single-info-title over">
           <!-- <text class="card-id">{{val.type==0?"#求租房子#":val.type==1?"#出售房子#":"#其他#"}} </text>  -->
@@ -83,8 +83,8 @@
         <view>
           <rich-text nodes="{{val.summary}}"> </rich-text>
         </view>
-        <view class="vtu-news-single-info-detail">
-          <span>{{val.user&&val.user.nickName || '访客'}}</span>
+        <view class="vtu-news-single-info-detail" wx:if='{{val.views>=0}}'>
+          <span>{{val.user&&val.user.nickName}}</span>
           <span>{{val.views}}次阅读</span>
         </view>
       </view>
@@ -92,10 +92,10 @@
         <image src="{{val.files[0].url}}" mode="aspectFill"></image>
       </view>
     </view>
-    <!-- <view class="vtu-news-tool">
-      <view class="vtu-news-tool-li"><i class="iconfont icon-share"></i>转发</view>
-      <view class="vtu-news-tool-li"><i class="iconfont icon-yijian"></i>评论</view>
-      <view class="vtu-news-tool-li"><i class="iconfont icon-zanshangshouyi"></i>点赞</view>
-    </view> -->
+    <view class="delect" wx:else>
+      <view >
+        {{val.title}}
+      </view>
+    </view>
   </view>
 </view>

@@ -108,7 +108,7 @@
   padding-right: 0px;
 }
 .Vtu-Button-Size--default{
-  padding: 12px !important;
+  padding: 16px !important;
 }
 .Vtu-Button-Size--medium{
   padding: 9px !important;

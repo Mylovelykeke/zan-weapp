@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "社区建设",
   "usingComponents": {
     "i-card": "/components/card/index",
     "i-cell-group": "/components/cell-group/index",

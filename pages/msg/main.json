@@ -5,6 +5,7 @@
     "i-card": "/components/card/index",
     "i-cell-group": "/components/cell-group/index",
     "i-cell": "/components/cell/index",
-    "i-swipeout": "/components/swipeout/index"
+    "i-swipeout": "/components/swipeout/index",
+    "login-component": "/components/logincomponent/index"
   }
 }

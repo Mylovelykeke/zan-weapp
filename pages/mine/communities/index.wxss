@@ -27,3 +27,6 @@
   overflow: hidden;
   border-radius: 10px;
 }
+.footer{
+  padding-bottom: 10px;
+}

@@ -1,0 +1,16 @@
+/* pages/mine/communities/reports/index.wxss */
+.main{
+  margin: 5px 0;
+}
+.type {
+  line-height: 24px;
+  color: black;
+}
+.type text{
+  color: #666;
+}
+.Complaints{
+  text-align: center;
+  font-size: 14px;
+  color: #0079FE;
+}

@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    flag:false,
     itemInfo: '',
     hostId: '',
     title: '',
@@ -18,6 +19,7 @@ Page({
     plaVal: '我也说一句。。。。',
     parentCommentId: '',
     value: '',
+    focus:false,
     type: 0,
     userInfo: {
       name: '访客',
@@ -131,6 +133,15 @@ Page({
   },
 
   sendText(e) {
+    if (!app.globalData.userInfo) {
+      this.setData({
+        focus:false,
+        flag: true
+      })
+      return
+    }
+
+
     let hostId = this.data.hostId
     let replyUserId = this.data.replyUserId
     let val = e.detail

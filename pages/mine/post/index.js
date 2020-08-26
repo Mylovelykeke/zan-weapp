@@ -11,16 +11,16 @@ Page({
     content: [],
     show: false,
     flag: null,
-    targetid:null,
-    edit:null,
-    num:1,
-    like:null
+    targetid: null,
+    edit: null,
+    num: 1,
+    like: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.myPostList()
   },
   async onGetCount(hostId) {
@@ -40,10 +40,10 @@ Page({
         show: false
       }
     })
-    let openid = app.globalData.openid || 'ongb-4yJcjO0dakkME1Q9q8LenZo'
+    let openid = app.globalData.openid 
     let results = await httpWX.get({
       url: `/article`,
-      data:{
+      data: {
         page: page,
         openid: openid,
       }
@@ -91,34 +91,34 @@ Page({
     this.setData({
       flag: false,
       show: true,
-      like:like,
+      like: like,
       targetid: targetid
     })
   },
 
-  edit(){
+  edit() {
     wx.navigateTo({
       url: `/pages/home/write/index?edit=true&articleid=${this.data.targetid}`,
     })
   },
-  async cancel(){
+  async cancel() {
     let result = await httpWX.post({
       url: `/like/delete`,
       data: {
-       id:this.data.like.id
+        id: this.data.like.id
       }
     })
-    if(result.success){
+    if (result.success) {
       this.setData({
-        like:null
+        like: null
       })
     }
   },
 
-  async likeArticle(){
+  async likeArticle() {
     let result = await httpWX.post({
       url: `/like/`,
-      data:{
+      data: {
         articleId: this.data.targetid,
         userId: app.globalData.openid || 'ongb-4yJcjO0dakkME1Q9q8LenZo'
       }
@@ -130,9 +130,9 @@ Page({
     }
   },
 
-  deleteArticle(){
+  deleteArticle() {
     this.setData({
-      show:false
+      show: false
     })
     Dialog().open({
       content: '确定删除文章吗？',
@@ -148,22 +148,23 @@ Page({
         {
           type: 'primary',
           label: '确认',
-          click:  (e) => {
+          click: (e) => {
+            Dialog().close()
             this.target(this.data.targetid)
-            setTimeout(function () {
-              Dialog().close()
-            }, 500)
           }
         }
       ]
     })
   },
 
-  async target(id){
+  async target(id) {
     let result = await httpWX.post({
       url: `/article/delete/${id}`,
     })
-    if (result.success){
+    if (result.success) {
+      this.setData({
+        num:1
+      })
       this.myPostList()
     }
   },
@@ -171,47 +172,47 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
     this.myPostList()
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     return {
-      　　　　title: "转发的标题",        // 默认是小程序的名称(可以写slogan等)
-      　　　　path: '',        // 默认是当前页面，必须是以‘/’开头的完整路径
-      　　　　imageUrl: '',     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
-      　　　　success: function (res) {
-        　　　　　　// 转发成功之后的回调
-        　　　　　　if (res.errMsg == 'shareAppMessage:ok') {
-        　　　　　　}
-      　　　　},
-      　　　　fail: function () {
-        　　　　　　// 转发失败之后的回调
-        　　　　　　if (res.errMsg == 'shareAppMessage:fail cancel') {
-          　　　　　　　　// 用户取消转发
-        　　　　　　} else if (res.errMsg == 'shareAppMessage:fail') {
-          　　　　　　　　// 转发失败，其中 detail message 为详细失败信息
-        　　　　　　}
-      　　　　},
-      　　　　complete: function(){
-    　　　　}
-  　　}
+      title: "转发的标题",        // 默认是小程序的名称(可以写slogan等)
+      path: '',        // 默认是当前页面，必须是以‘/’开头的完整路径
+      imageUrl: '',     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+      success: function (res) {
+        // 转发成功之后的回调
+        if (res.errMsg == 'shareAppMessage:ok') {
+        }
+      },
+      fail: function () {
+        // 转发失败之后的回调
+        if (res.errMsg == 'shareAppMessage:fail cancel') {
+          // 用户取消转发
+        } else if (res.errMsg == 'shareAppMessage:fail') {
+          // 转发失败，其中 detail message 为详细失败信息
+        }
+      },
+      complete: function () {
+      }
+    }
   }
 })

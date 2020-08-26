@@ -93,3 +93,4 @@
   </view>
 </view>
 <chat-model bind:sendText='sendText'  id="towerId" inputFocus='{{focus}}' plaVal='{{plaVal}}' messageText="{{value}}"></chat-model>
+<login-component flag="{{flag}}" bind:closeMask="closeMask" bind:getUserInfo='getUserInfo'></login-component>

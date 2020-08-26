@@ -1,0 +1,63 @@
+<!--pages/mine/communities/reports/index.wxml-->
+<wxs module="m1">
+  var getType = function(num) {
+    n = num * 1
+    var a = ["低俗色情", "垃圾广告", "内容低俗无意义", "辱骂攻击", "其他违法信息", "抄袭我的内容", "暴露我的隐私", "内容里有关于我的不实描述"]
+    return a[n]
+  }
+  module.exports.getType = getType;
+</wxs>
+<wxs module="m2">
+  var cutstring = function(num) {
+    var a = num.split('-')
+    return a[0]
+  }
+  module.exports.cutstring = cutstring;
+</wxs>
+<van-tabs bind:click="onClick">
+  <van-tab title-style='font-weight:bold;' title="我的举报">
+    <view class="main" wx:for="{{list}}" wx:key='index'>
+      <i-card title="{{item.article.title}}" >
+        <view data-id='{{item.article.id}}' bindtap='getDetail' slot="content">
+          <view class="type">举报理由
+            <text decode="{{true}}">  &nbsp;&nbsp;{{m1.getType(item.reasonType)}}</text>
+          </view>
+          <view class="type">举报状态
+            <text decode="{{true}}">  &nbsp;&nbsp;{{"处理完成暂未违规"}}</text>
+          </view>
+          <view class="type">举报时间
+            <text decode="{{true}}">  &nbsp;&nbsp;{{item.createAt}}</text>
+          </view>
+          <view class="type">举报编号
+            <text decode="{{true}}">  &nbsp;&nbsp;{{m2.cutstring(item.id)}}</text>
+          </view>
+        </view>
+      </i-card>
+    </view>
+  </van-tab>
+  <van-tab title-style='font-weight:bold;' title="违规记录">
+    <view class="main" wx:for="{{list}}" wx:key='index'>
+      <i-card title="{{item.article.title}}" extra="额外内容">
+        <view  data-id='{{item.article.id}}' bindtap='getDetail' slot="content">
+          <view class="type">举报理由
+            <text decode="{{true}}">  &nbsp;&nbsp;{{m1.getType(item.reasonType)}}</text>
+          </view>
+          <view class="type">举报状态
+            <text decode="{{true}}">  &nbsp;&nbsp;{{"处理完成暂未违规"}}</text>
+          </view>
+          <view class="type">举报时间
+            <text decode="{{true}}">  &nbsp;&nbsp;{{item.createAt}}</text>
+          </view>
+          <view class="type">举报编号
+            <text decode="{{true}}">  &nbsp;&nbsp;{{m2.cutstring(item.id)}}</text>
+          </view>
+        </view>
+        <view slot="footer">
+          <view class="Complaints">
+          我要申诉
+          </view>
+        </view>
+      </i-card>
+    </view>
+  </van-tab>
+</van-tabs>

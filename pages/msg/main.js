@@ -7,10 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    flag:true,
     userId: '',
     comment: [],
     loading: {
-      show: false
+      show: true
     },
     actions: [
       {
@@ -46,6 +47,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  },
+  getUserInfo(e){
+    this.getMsgList(e.detail.openid)
+  },
+  step() {
     let userId = app.globalData.openid
     if (!userId) {
       app.openIdReadyCallback = res => {
@@ -62,8 +68,10 @@ Page({
       this.getMsgList(userId)
     }
   },
-
   async getMsgList(userId){
+    if(!userId){
+      return
+    }
     this.setData({
       loading: {
         show: false
@@ -87,18 +95,26 @@ Page({
       url: "/pages/home/common_item_detail/index?id=" + id,
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if (app.globalData.userInfo) {
+      this.setData({
+        flag: false
+      })
+      this.step()
+    } else {
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          flag: false
+        })
+        if (res.userInfo) {
+          this.step()
+        }
+      }
+    }
   },
 
   /**

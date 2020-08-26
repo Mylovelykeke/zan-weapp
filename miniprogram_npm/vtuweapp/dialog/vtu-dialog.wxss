@@ -74,7 +74,7 @@
     width: calc(100% - 40px);
     margin: 15px 20px 15px 20px;
     font-size: 14px;
-    line-height: 20px;
+    line-height: 60px;
     overflow: hidden;
 }
 .Vtu_Dialog_Center_Body_Scroll{
